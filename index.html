@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proactive Motion — Architect Engagement Impact</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --navy:    #032D60;
+  --blue:    #0176D3;
+  --blue-lt: #1B96FF;
+  --teal:    #06A59A;
+  --green:   #22C55E;
+  --green-dk:#15803D;
+  --red:     #EF4444;
+  --amber:   #F59E0B;
+  --purple:  #8B5CF6;
+  --bg:      #080F1E;
+  --bg2:     #0D1929;
+  --bg3:     #111E33;
+  --border:  rgba(255,255,255,0.08);
+  --muted:   rgba(255,255,255,0.45);
+  --white:   #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #032D60 0%, #0176D3 60%, #06A59A 100%);
+  padding: 40px 48px 36px;
+  position: relative; overflow: hidden;
+}
+.header::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.header::after {
+  content: ''; position: absolute; bottom: -100px; right: 200px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.header-inner { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; }
+.header h1 {
+  font-size: 28px; font-weight: 900; letter-spacing: -0.5px;
+  line-height: 1.2; color: white;
+}
+.header p {
+  font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 8px; max-width: 540px;
+}
+.header-meta {
+  display: flex; align-items: center; gap: 10px; margin-top: 16px; flex-wrap: wrap;
+}
+.header-tag {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: white; border-radius: 20px; padding: 4px 14px;
+  font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);
+}
+.header-right {
+  position: absolute; top: 40px; right: 48px; z-index: 1;
+  text-align: right; color: rgba(255,255,255,0.6); font-size: 11px; line-height: 1.9;
+}
+
+/* ── KPI STRIP ── */
+.kpi-strip {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(5,1fr);
+}
+.kpi {
+  padding: 20px 28px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.kpi:last-child { border-right: none; }
+.kpi-val {
+  font-size: 36px; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.kpi-val.green { background: linear-gradient(135deg, #22C55E, #86EFAC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.kpi-val.amber { background: linear-gradient(135deg, #F59E0B, #FCD34D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.kpi-val.red   { background: linear-gradient(135deg, #EF4444, #FCA5A5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.kpi-val.blue  { background: linear-gradient(135deg, #60A5FA, #BAE6FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.kpi-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-top: 5px; }
+.kpi-sub   { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+/* ── CONTROLS ── */
+.controls {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 48px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.filter-btn {
+  padding: 7px 16px; border-radius: 24px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--muted);
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  transition: all 0.18s; font-family: 'Inter', sans-serif;
+}
+.filter-btn:hover { border-color: var(--blue-lt); color: var(--white); }
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  border-color: transparent; color: white;
+}
+.search-box {
+  margin-left: auto;
+  background: rgba(255,255,255,0.06); border: 1.5px solid var(--border);
+  border-radius: 24px; padding: 7px 16px;
+  color: white; font-size: 12px; outline: none; width: 200px;
+  font-family: 'Inter', sans-serif; transition: border-color 0.18s;
+}
+.search-box::placeholder { color: var(--muted); }
+.search-box:focus { border-color: var(--blue-lt); }
+.sort-select {
+  background: rgba(255,255,255,0.06); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 7px 12px;
+  color: white; font-size: 12px; outline: none;
+  font-family: 'Inter', sans-serif; cursor: pointer;
+}
+.sort-select option { background: #0D1929; }
+
+/* ── GRID ── */
+.main { max-width: 1400px; margin: 0 auto; padding: 32px 48px 60px; }
+
+.group-label {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 16px; margin-top: 8px;
+}
+.group-label .gl-line { flex: 1; height: 1px; background: currentColor; opacity: 0.2; }
+.group-label.g-win  { color: var(--green); }
+.group-label.g-flat { color: #9DB0C0; }
+.group-label.g-risk { color: var(--red); }
+.group-label.g-canc { color: var(--amber); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--bg3);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 24px 22px 20px;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.18);
+}
+.card.win  { border-top: 3px solid var(--green); }
+.card.risk { border-top: 3px solid var(--red); }
+.card.flat { border-top: 3px solid #9DB0C0; }
+.card.canc { border-top: 3px solid var(--amber); }
+
+/* glow accent */
+.card.win::before  { content:''; position:absolute; top:0; left:0; right:0; height:60px; background: linear-gradient(180deg,rgba(34,197,94,0.08),transparent); border-radius: 20px 20px 0 0; }
+.card.risk::before { content:''; position:absolute; top:0; left:0; right:0; height:60px; background: linear-gradient(180deg,rgba(239,68,68,0.08),transparent); border-radius: 20px 20px 0 0; }
+
+/* ── CARD HEADER ── */
+.card-head {
+  display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.card-name {
+  font-size: 15px; font-weight: 800; color: white; line-height: 1.3; max-width: 160px;
+}
+.card-eng {
+  font-size: 10px; color: var(--muted); margin-top: 4px; line-height: 1.4;
+}
+.card-geo {
+  font-size: 10px; font-weight: 700; color: var(--muted);
+  background: rgba(255,255,255,0.06); border-radius: 6px;
+  padding: 3px 8px; flex-shrink: 0;
+}
+
+/* ── ARC METER ── */
+.arc-wrap {
+  display: flex; justify-content: center; margin: 4px 0 18px;
+  position: relative; z-index: 1;
+}
+.arc-svg { width: 160px; height: 90px; overflow: visible; }
+
+/* ── SCORE ROW (underlined) ── */
+.score-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.score-cell {
+  text-align: center; padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.score-cell.pos-delta { border-bottom-color: var(--green); }
+.score-cell.neg-delta { border-bottom-color: var(--red); }
+.score-cell.flat-delta { border-bottom-color: #9DB0C0; }
+.score-cell .sc-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+.score-cell .sc-val   { font-size: 22px; font-weight: 900; line-height: 1.1; margin-top: 2px; }
+.score-cell .sc-delta {
+  font-size: 10px; font-weight: 700; margin-top: 2px;
+  padding: 1px 6px; border-radius: 4px; display: inline-block;
+}
+.d-pos  { background: rgba(34,197,94,0.15);  color: #4ADE80; }
+.d-neg  { background: rgba(239,68,68,0.15);  color: #F87171; }
+.d-flat { background: rgba(255,255,255,0.06); color: #9DB0C0; }
+.d-na   { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.25); font-size: 9px; }
+
+/* ── REC FOOTER ── */
+.card-rec {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(255,255,255,0.04); border-radius: 10px;
+  padding: 10px 12px; font-size: 11px; line-height: 1.4;
+  color: rgba(255,255,255,0.7); position: relative; z-index: 1;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.card-rec.win  { background: rgba(34,197,94,0.08);  border-color: rgba(34,197,94,0.2);  color: #86EFAC; }
+.card-rec.risk { background: rgba(239,68,68,0.08);  border-color: rgba(239,68,68,0.2);  color: #FCA5A5; }
+.card-rec.flat { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.18); color: #FCD34D; }
+.card-rec .rec-ico { font-size: 14px; flex-shrink: 0; }
+
+/* ── MODAL ── */
+.modal-bg {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+  z-index: 1000; display: none; align-items: center; justify-content: center;
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: var(--bg2); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px; width: 90%; max-width: 760px; max-height: 86vh;
+  overflow-y: auto; padding: 32px 36px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+  animation: popIn 0.2s ease;
+}
+@keyframes popIn { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+.modal-close {
+  float: right; background: rgba(255,255,255,0.1); border: none;
+  border-radius: 50%; width: 32px; height: 32px; font-size: 18px; color: white;
+  cursor: pointer; line-height: 32px; text-align: center; transition: background 0.15s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.2); }
+.modal-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.modal-eng   { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+.modal-scores {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-bottom: 24px;
+}
+.ms-card {
+  background: rgba(255,255,255,0.04); border-radius: 14px;
+  border: 1px solid var(--border); padding: 18px 20px;
+}
+.ms-card-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-bottom: 12px; }
+.ms-ba {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.ms-ba-num { text-align: center; flex: 1; }
+.ms-ba-num .n { font-size: 30px; font-weight: 900; line-height: 1; }
+.ms-ba-num .l { font-size: 9px; color: var(--muted); margin-top: 2px; text-transform: uppercase; }
+.ms-ba-num.before .n { color: rgba(255,255,255,0.35); }
+.ms-ba-num.after  .n { color: white; }
+.ms-arrow { font-size: 22px; color: var(--muted); }
+.ms-delta-badge {
+  text-align: center; font-size: 18px; font-weight: 800;
+  border-radius: 8px; padding: 4px 12px; width: fit-content; margin: 0 auto 10px;
+}
+.ms-spark svg { width: 100%; height: 38px; display: block; }
+.modal-rec {
+  border-radius: 12px; padding: 14px 18px;
+  font-size: 12px; line-height: 1.7; font-weight: 500;
+}
+.modal-rec.win  { background: rgba(34,197,94,0.1);  border-left: 3px solid var(--green); color: #86EFAC; }
+.modal-rec.risk { background: rgba(239,68,68,0.1);  border-left: 3px solid var(--red);   color: #FCA5A5; }
+.modal-rec.flat { background: rgba(245,158,11,0.1); border-left: 3px solid var(--amber); color: #FCD34D; }
+.modal-rec.canc { background: rgba(255,255,255,0.04); border-left: 3px solid #9DB0C0; color: var(--muted); }
+
+.empty-state {
+  text-align: center; padding: 80px 20px; color: var(--muted); display: none;
+}
+.empty-state .es-ico { font-size: 48px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <h1>Proactive Motion — Architect Engagement Impact</h1>
+    <p>CSS score trends across 15 Industries accounts, measured before and after architect engagement. Click any card to see the full breakdown.</p>
+    <div class="header-meta">
+      <span class="header-tag">15 Accounts</span>
+      <span class="header-tag">Oct 2025 – Sep 2026</span>
+      <span class="header-tag">4 Score Dimensions</span>
+      <span class="header-tag">EMEA · IST · APAC</span>
+    </div>
+  </div>
+  <div class="header-right">Report: Oct 2026<br>Industries Cloud<br>Salesforce LSC</div>
+</div>
+
+<!-- KPI STRIP -->
+<div class="kpi-strip" id="kpi-strip"></div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <button class="filter-btn active" data-filter="all">All Accounts</button>
+  <button class="filter-btn" data-filter="win">✅ Improved</button>
+  <button class="filter-btn" data-filter="flat">→ Stable</button>
+  <button class="filter-btn" data-filter="risk">⚠️ At Risk</button>
+  <button class="filter-btn" data-filter="canc">Cancelled</button>
+  <select class="sort-select" id="sort-select">
+    <option value="css-desc">CSS Score ↓</option>
+    <option value="css-asc">CSS Score ↑</option>
+    <option value="css-delta">CSS Impact ↓</option>
+    <option value="ths-delta">THS Impact ↓</option>
+    <option value="name">A → Z</option>
+  </select>
+  <input class="search-box" type="text" placeholder="🔍  Search account..." id="search-input">
+</div>
+
+<!-- MAIN -->
+<div class="main" id="main-grid"></div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg" onclick="closeModal(event)">
+  <div class="modal" id="modal-inner"></div>
+</div>
+
+<script>
+const MONTHS = ['Oct-25','Nov-25','Dec-25','Jan-26','Feb-26','Mar-26','Apr-26','May-26','Jun-26','Jul-26','Aug-26','Sep-26'];
+
+const RAW = [
+  { name:'ANZ Bank Insto',       eng:'Account Team Review',              intv:8,  cancelled:false, geo:'APAC',
+    ths:[78,78,82,78,82,78,79,80,81,82,80,83], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'FSC',v:[55,55,54,54,54,54,54,54,55,61,62,62]}, css:[70,70,72,71,72,71,71,71,72,74,74,74] },
+  { name:'PT Indosat',           eng:'CME OM Review IOH B2B',            intv:9,  cancelled:false, geo:'APAC',
+    ths:[72,72,77,76,76,75,76,75,78,79,73,67], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'CME Cloud',v:[null,null,null,null,null,null,null,null,null,null,41,48]}, css:[59,58,60,59,58,59,59,58,61,60,67,67] },
+  { name:'INWI',                 eng:'Technical Debt Review',            intv:7,  cancelled:false, geo:'EMEA',
+    ths:[52,52,58,53,53,54,50,57,59,61,61,59], ces:[96,99,99,100,100,100,100,100,99,100,100,99],
+    adp:{p:'B2C Order Mgmt',v:[100,100,100,100,100,100,100,100,100,100,100,100]}, css:[54,54,56,54,55,54,54,56,59,60,58,59] },
+  { name:'MECCA Brands',         eng:'Gamification POC Design Blockers', intv:8,  cancelled:false, geo:'APAC',
+    ths:[67,68,70,70,70,69,78,79,71,70,69,74], ces:[93,93,93,93,93,93,93,93,93,93,93,93],
+    adp:{p:'Loyalty Mgmt',v:[80,79,79,78,83,84,84,83,80,81,82,81]}, css:[70,70,70,70,55,55,57,56,54,52,54,60] },
+  { name:'RTWSA',                eng:'Architecture Design Review',       intv:8,  cancelled:false, geo:'APAC',
+    ths:[71,74,75,75,72,69,76,73,73,71,76,74], ces:[67,67,67,67,67,67,67,67,67,67,67,67],
+    adp:{p:'Public Sector',v:[62,64,64,64,45,44,45,45,45,61,63,64]}, css:[42,43,43,43,47,46,47,46,49,47,49,49] },
+  { name:'Protas (Easi Kidney)', eng:'Document Generation Review',       intv:9,  cancelled:false, geo:'APAC',
+    ths:[79,75,73,78,77,75,74,75,78,77,78,76], ces:[77,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'Health Cloud',v:[46,47,48,48,47,47,48,47,48,49,46,47]}, css:[59,64,64,63,64,64,64,66,68,70,71,71] },
+  { name:'Telstra',              eng:'OmniStudio Security Enhancement',  intv:9,  cancelled:false, geo:'APAC',
+    ths:[77,77,77,77,77,79,78,78,78,78,78,79], ces:[93,93,93,93,86,94,94,94,94,84,84,84],
+    adp:{p:'CME Cloud',v:[13,16,16,12,13,13,16,12,16,15,16,15]}, css:[53,53,52,51,49,48,48,48,49,49,48,48] },
+  { name:'PPC S.A.',             eng:'Proactive Engagement',             intv:8,  cancelled:false, geo:'EMEA',
+    ths:[72,66,68,69,67,64,69,69,68,67,69,64], ces:[100,100,100,100,100,100,100,99,100,100,100,100],
+    adp:{p:'CME Cloud',v:[42,56,53,52,55,58,50,54,57,55,45,45]}, css:[55,54,54,53,56,59,58,59,59,58,59,59] },
+  { name:'Siemens Energy',       eng:'Architecture Design Review',       intv:9,  cancelled:false, geo:'EMEA',
+    ths:[68,68,71,69,71,68,68,67,68,71,71,69], ces:[77,77,77,77,77,77,77,66,77,77,78,78],
+    adp:{p:null,v:[null,null,null,null,null,null,null,null,null,null,null,null]}, css:[62,64,63,63,64,67,66,66,67,68,68,69] },
+  { name:'IRESS',                eng:'ARM Sandbox Setup',                intv:8,  cancelled:false, geo:'APAC',
+    ths:[78,77,78,78,78,76,79,81,77,76,78,78], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'Rev Intelligence',v:[9,8,7,7,8,8,7,7,7,8,8,8]}, css:[62,65,56,55,56,58,59,59,57,57,58,58] },
+  { name:'Optus',                eng:'PSL Enablement Guidance',          intv:9,  cancelled:false, geo:'APAC',
+    ths:[83,85,86,85,82,86,81,80,81,81,81,79], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'CME Cloud',v:[null,null,null,null,null,null,null,null,null,4,3,4]}, css:[40,38,37,33,33,36,35,35,35,39,37,38] },
+  { name:'Orange Cyberdefense',  eng:'Security Overview',                intv:9,  cancelled:false, geo:'EMEA',
+    ths:[76,75,80,81,80,77,75,73,75,77,75,71], ces:[77,77,77,100,100,100,100,100,100,100,100,100],
+    adp:{p:null,v:[null,null,null,null,null,null,null,null,null,null,null,null]}, css:[72,73,74,79,81,80,79,78,79,79,79,78] },
+  { name:'Fennia',               eng:'Proactive Outreach Support',       intv:7,  cancelled:false, geo:'EMEA',
+    ths:[76,75,75,73,73,73,73,70,72,68,67,74], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'FSC',v:[51,49,49,53,52,51,51,55,19,20,21,18]}, css:[54,54,54,56,57,54,55,55,53,52,53,54] },
+  { name:'Sky Business',         eng:'Security Threat Model',            intv:9,  cancelled:true,  geo:'EMEA',
+    ths:[70,72,74,75,71,70,71,71,75,66,63,64], ces:[100,100,100,100,100,100,100,100,100,100,100,100],
+    adp:{p:'CME Cloud',v:[82,81,80,81,81,82,83,81,81,83,83,82]}, css:[75,76,75,77,75,76,77,77,78,75,74,75] },
+  { name:'William Reed',         eng:'Go-Live Precheck',                 intv:9,  cancelled:true,  geo:'EMEA',
+    ths:[78,78,81,81,81,80,78,73,76,74,76,74], ces:[20,21,64,75,77,77,66,77,77,100,100,100],
+    adp:{p:'Revenue Cloud',v:[0,25,25,25,17,25,26,26,23,95,93,96]}, css:[57,58,64,66,64,64,65,66,69,77,78,80] },
+];
+
+/* helpers */
+function avgOf(arr) { const v=arr.filter(x=>x!==null&&x!==undefined); return v.length?v.reduce((a,b)=>a+b,0)/v.length:null; }
+function bfrAvg(s,i){ return avgOf(s.slice(0,i)); }
+function aftAvg(s,i){ return avgOf(s.slice(i+1)); }
+function r1(x)      { return x!==null&&x!==undefined?Math.round(x*10)/10:null; }
+function lastV(s)   { for(let i=s.length-1;i>=0;i--) if(s[i]!==null&&s[i]!==undefined) return s[i]; return null; }
+function firstV(s)  { for(let i=0;i<s.length;i++) if(s[i]!==null&&s[i]!==undefined) return s[i]; return null; }
+
+const ACCS = RAW.map(a=>{
+  const o=Object.assign({},a);
+  const noAdp=a.adp.v.every(x=>x===null||x===undefined);
+  o.thsBfr=r1(bfrAvg(a.ths,a.intv)); o.thsAft=r1(aftAvg(a.ths,a.intv)); o.thsD=(o.thsBfr!==null&&o.thsAft!==null)?r1(o.thsAft-o.thsBfr):null;
+  o.cesBfr=r1(bfrAvg(a.ces,a.intv)); o.cesAft=r1(aftAvg(a.ces,a.intv)); o.cesD=(o.cesBfr!==null&&o.cesAft!==null)?r1(o.cesAft-o.cesBfr):null;
+  o.adpBfr=noAdp?null:r1(bfrAvg(a.adp.v.map(x=>x===undefined?null:x),a.intv));
+  o.adpAft=noAdp?null:r1(aftAvg(a.adp.v.map(x=>x===undefined?null:x),a.intv));
+  o.adpD=(o.adpBfr!==null&&o.adpAft!==null)?r1(o.adpAft-o.adpBfr):null; o.noAdp=noAdp;
+  o.cssBfr=r1(bfrAvg(a.css,a.intv)); o.cssAft=r1(aftAvg(a.css,a.intv)); o.cssD=(o.cssBfr!==null&&o.cssAft!==null)?r1(o.cssAft-o.cssBfr):null;
+  o.cssLast=lastV(a.css); o.cssFirst=firstV(a.css);
+  const thsUp=o.thsD!==null&&o.thsD>1, thsDn=o.thsD!==null&&o.thsD<-1;
+  const cssUp=o.cssD!==null&&o.cssD>1, cssDn=o.cssD!==null&&o.cssD<-1;
+  if(a.cancelled) o.verdict='canc';
+  else if(thsUp||cssUp) o.verdict='win';
+  else if(thsDn||cssDn) o.verdict='risk';
+  else o.verdict='flat';
+  return o;
+});
+
+function getRec(a) {
+  if(a.cancelled) return {short:'Engagement cancelled — consider re-initiating',icon:'🔄'};
+  const thsS=a.thsD>1?'improved':a.thsD<-1?'declined':'held steady';
+  const cssS=a.cssD>1?'improved':a.cssD<-1?'declined':'held steady';
+  if(a.verdict==='win') return {short:'Architect involvement drove measurable gains',icon:'✅',full:`Technical Health ${thsS} by ${a.thsD>0?'+':''}${a.thsD} pts and CSS ${cssS} by ${a.cssD>0?'+':''}${a.cssD} pts after engagement. Continue periodic architect check-ins to sustain momentum. Share as a success story internally.`};
+  if(a.verdict==='risk') return {short:'Scores declined — re-engagement recommended',icon:'⚠️',full:`Technical Health ${thsS} (${a.thsD>0?'+':''}${a.thsD} pts) and CSS ${cssS} (${a.cssD>0?'+':''}${a.cssD} pts) post-engagement. Schedule a follow-up architecture review and investigate whether recommendations were implemented.`};
+  return {short:'Stable — explore deeper adoption opportunities',icon:'💬',full:`Scores have broadly held steady after engagement. The foundation is solid with headroom for growth. Consider a focused Product Adoption workshop or CES-driven engagement to unlock next-level value.`};
+}
+
+/* KPI */
+const active=ACCS.filter(a=>!a.cancelled);
+const wins=active.filter(a=>a.verdict==='win').length;
+const risks=active.filter(a=>a.verdict==='risk').length;
+const flats=active.filter(a=>a.verdict==='flat').length;
+const avgCss=r1(active.filter(a=>a.cssLast!==null).reduce((s,a)=>s+a.cssLast,0)/active.filter(a=>a.cssLast!==null).length);
+const avgThsD=r1(active.filter(a=>a.thsD!==null).reduce((s,a)=>s+a.thsD,0)/active.filter(a=>a.thsD!==null).length);
+
+document.getElementById('kpi-strip').innerHTML=`
+  <div class="kpi"><div class="kpi-val green">${wins}</div><div class="kpi-label">Scores Improved</div><div class="kpi-sub">THS or CSS up after engagement</div></div>
+  <div class="kpi"><div class="kpi-val amber">${flats}</div><div class="kpi-label">Stable Accounts</div><div class="kpi-sub">Within ±1 pt on all scores</div></div>
+  <div class="kpi"><div class="kpi-val red">${risks}</div><div class="kpi-label">Need Re-engagement</div><div class="kpi-sub">Scores declined post-engagement</div></div>
+  <div class="kpi"><div class="kpi-val blue">${avgCss}</div><div class="kpi-label">Avg CSS (Sep-26)</div><div class="kpi-sub">13 active accounts</div></div>
+  <div class="kpi"><div class="kpi-val ${avgThsD>=0?'green':'red'}">${avgThsD>=0?'+':''}${avgThsD}</div><div class="kpi-label">Avg THS Impact</div><div class="kpi-sub">Delta after engagement</div></div>`;
+
+/* arc meter SVG */
+function arcSVG(val, color) {
+  const cx=80, cy=80, r=62;
+  const startAngle=-200, totalAngle=220;
+  const toRad=d=>d*Math.PI/180;
+  const pct=Math.max(0,Math.min(val||0,100));
+  const fillAngle=totalAngle*(pct/100);
+  const bgEnd=startAngle+totalAngle;
+  const fgEnd=startAngle+fillAngle;
+  function arcPath(sa,ea,rr){
+    const s={x:cx+rr*Math.cos(toRad(sa)),y:cy+rr*Math.sin(toRad(sa))};
+    const e={x:cx+rr*Math.cos(toRad(ea)),y:cy+rr*Math.sin(toRad(ea))};
+    const large=(ea-sa)>180?1:0;
+    return `M ${s.x} ${s.y} A ${rr} ${rr} 0 ${large} 1 ${e.x} ${e.y}`;
+  }
+  const scoreColor = val>=70?'#22C55E':val>=50?'#1B96FF':'#EF4444';
+  const glowColor  = val>=70?'rgba(34,197,94,0.3)':val>=50?'rgba(27,150,255,0.3)':'rgba(239,68,68,0.3)';
+  return `<svg class="arc-svg" viewBox="0 0 160 100">
+    <defs>
+      <linearGradient id="arcGrad${val}" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="${scoreColor}" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="${scoreColor}"/>
+      </linearGradient>
+      <filter id="glow${val}">
+        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <!-- track -->
+    <path d="${arcPath(startAngle,bgEnd,r)}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10" stroke-linecap="round"/>
+    <!-- fill -->
+    ${pct>0?`<path d="${arcPath(startAngle,fgEnd,r)}" fill="none" stroke="url(#arcGrad${val})" stroke-width="10" stroke-linecap="round" filter="url(#glow${val})"/>`:``}
+    <!-- value label -->
+    <text x="80" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="28" font-weight="900" fill="${scoreColor}">${val??'—'}</text>
+    <text x="80" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.45)" letter-spacing="1">CSS SCORE</text>
+  </svg>`;
+}
+
+/* score cell */
+function scoreCell(label, val, delta, noData) {
+  const s=delta!==null?(delta>0?'+':'')+delta:'—';
+  const dcls=noData?'d-na':delta===null?'d-na':delta>1?'d-pos':delta<-1?'d-neg':'d-flat';
+  const bcls=noData?'flat-delta':delta===null?'flat-delta':delta>1?'pos-delta':delta<-1?'neg-delta':'flat-delta';
+  const vc=noData?'rgba(255,255,255,0.2)':val>=70?'#22C55E':val>=50?'#60A5FA':'#F87171';
+  return `<div class="score-cell ${bcls}">
+    <div class="sc-label">${label}</div>
+    <div class="sc-val" style="color:${noData?'rgba(255,255,255,0.2)':vc}">${noData||val===null?'—':val}</div>
+    <span class="sc-delta ${dcls}">${noData?'N/A':s}</span>
+  </div>`;
+}
+
+/* sparkline */
+function sparkline(vals, color, h=38) {
+  const v=vals.map(x=>x===null||x===undefined?null:x);
+  const pts=v.filter(x=>x!==null);
+  if(!pts.length) return `<svg viewBox="0 0 200 ${h}"><text x="4" y="16" font-size="9" fill="rgba(255,255,255,0.2)">No data</text></svg>`;
+  const mn=Math.min(...pts)-2,mx=Math.max(...pts)+2,rng=mx-mn||1;
+  const W=200,H=h,pad=4;
+  const coords=v.map((val,i)=>{ if(val===null) return null; return {x:pad+(i/11)*(W-2*pad),y:H-pad-((val-mn)/rng)*(H-2*pad),v:val}; });
+  const valid=coords.filter(c=>c!==null);
+  const line=valid.map(c=>`${c.x},${c.y}`).join(' ');
+  const area=valid.map(c=>`${c.x},${c.y}`).join(' ')+` ${valid[valid.length-1].x},${H-pad} ${valid[0].x},${H-pad}`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <defs><linearGradient id="sg${color.replace('#','')}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity="0.3"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+    <polygon points="${area}" fill="url(#sg${color.replace('#','')})"/>
+    <polyline points="${line}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round"/>
+    ${valid.map((c,i)=>i===0||i===valid.length-1?`<circle cx="${c.x}" cy="${c.y}" r="2.5" fill="${c.v>=(mn+rng/2)?color:'#EF4444'}"/>`:'').join('')}
+  </svg>`;
+}
+
+/* build card */
+function buildCard(a) {
+  const rec=getRec(a);
+  const vCls={win:'win',risk:'risk',flat:'flat',canc:'canc'}[a.verdict];
+  return `<div class="card ${vCls}" onclick="openModal('${a.name.replace(/'/g,"\\'")}')">
+    <div class="card-head">
+      <div>
+        <div class="card-name">${a.name}</div>
+        <div class="card-eng">${a.eng}${a.cancelled?' <span style="background:rgba(245,158,11,0.15);color:#FCD34D;font-size:9px;padding:1px 6px;border-radius:4px;font-weight:700">Cancelled</span>':''}</div>
+      </div>
+      <div class="card-geo">${a.geo}</div>
+    </div>
+    <div class="arc-wrap">${arcSVG(a.cssLast)}</div>
+    <div class="score-row">
+      ${scoreCell('THS', lastV(a.ths), a.thsD, false)}
+      ${scoreCell('CES', lastV(a.ces), a.cesD, false)}
+      ${scoreCell(a.adp.p?a.adp.p.split(' ')[0]:'Adopt', a.noAdp?null:lastV(a.adp.v), a.adpD, a.noAdp)}
+    </div>
+    <div class="card-rec ${vCls}">
+      <span class="rec-ico">${rec.icon}</span>
+      <span>${rec.short}</span>
+    </div>
+  </div>`;
+}
+
+/* modal */
+function openModal(name) {
+  const a=ACCS.find(x=>x.name===name); if(!a) return;
+  const rec=getRec(a);
+  const vCls={win:'win',risk:'risk',flat:'flat',canc:'canc'}[a.verdict];
+  function msCard(title, color, bfr, aft, d, vals, noData) {
+    const dSign=d!==null?(d>0?'+':'')+d:'—';
+    const bg=d>1?'rgba(34,197,94,0.15)':d<-1?'rgba(239,68,68,0.15)':'rgba(255,255,255,0.07)';
+    const fc=d>1?'#4ADE80':d<-1?'#F87171':'#9DB0C0';
+    return `<div class="ms-card">
+      <div class="ms-card-title">${title}</div>
+      ${noData?`<div style="color:rgba(255,255,255,0.25);font-style:italic;font-size:11px;padding:8px 0">No data available</div>`:`
+      <div class="ms-ba">
+        <div class="ms-ba-num before"><div class="n">${Math.round(bfr??0)}</div><div class="l">Before</div></div>
+        <div class="ms-arrow">${d>1?'↗':d<-1?'↘':'→'}</div>
+        <div class="ms-ba-num after"><div class="n">${Math.round(aft??0)}</div><div class="l">After</div></div>
+      </div>
+      <div class="ms-delta-badge" style="background:${bg};color:${fc}">${dSign} pts</div>
+      <div class="ms-spark">${sparkline(vals, color)}</div>`}
+    </div>`;
+  }
+  document.getElementById('modal-inner').innerHTML=`
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-title">${a.name}</div>
+    <div class="modal-eng">${a.eng} · ${a.geo} · Engagement closed: ${a.cancelled?'N/A':MONTHS[a.intv]}</div>
+    <div class="modal-scores">
+      ${msCard('🔧 Technical Health', '#60A5FA', a.thsBfr, a.thsAft, a.thsD, a.ths, false)}
+      ${msCard('🎓 Customer Expertise', '#34D399', a.cesBfr, a.cesAft, a.cesD, a.ces, false)}
+      ${msCard('📈 Product Adoption'+(a.adp.p?' — '+a.adp.p:''), '#A78BFA', a.adpBfr, a.adpAft, a.adpD, a.adp.v, a.noAdp)}
+      ${msCard('🎯 Customer Success Score', '#F472B6', a.cssBfr, a.cssAft, a.cssD, a.css, false)}
+    </div>
+    <div class="modal-rec ${vCls}"><strong>${rec.icon} Recommendation:</strong> ${rec.full||rec.short}</div>`;
+  document.getElementById('modal-bg').classList.add('open');
+}
+function closeModal(e) {
+  if(!e||e.target===document.getElementById('modal-bg')) document.getElementById('modal-bg').classList.remove('open');
+}
+
+/* filter / sort / render */
+let activeFilter='all';
+function applyFilter() {
+  const q=document.getElementById('search-input').value.toLowerCase().trim();
+  const sv=document.getElementById('sort-select').value;
+  let list=[...ACCS];
+  if(activeFilter!=='all') list=list.filter(a=>a.verdict===activeFilter);
+  if(q) list=list.filter(a=>a.name.toLowerCase().includes(q)||a.eng.toLowerCase().includes(q));
+  if(sv==='css-desc')  list.sort((a,b)=>(b.cssLast??0)-(a.cssLast??0));
+  if(sv==='css-asc')   list.sort((a,b)=>(a.cssLast??0)-(b.cssLast??0));
+  if(sv==='ths-delta') list.sort((a,b)=>(b.thsD??-999)-(a.thsD??-999));
+  if(sv==='css-delta') list.sort((a,b)=>(b.cssD??-999)-(a.cssD??-999));
+  if(sv==='name')      list.sort((a,b)=>a.name.localeCompare(b.name));
+  renderGrid(list);
+}
+
+function renderGrid(list) {
+  const main=document.getElementById('main-grid');
+  if(!list.length) { main.innerHTML=`<div class="empty-state" style="display:block"><div class="es-ico">🔍</div>No accounts match.</div>`; return; }
+  const groups=[
+    {id:'win', label:'✅  Improved — Architect engagement drove measurable gains', cls:'g-win'},
+    {id:'flat',label:'→  Stable — Scores held; opportunity for deeper engagement',  cls:'g-flat'},
+    {id:'risk',label:'⚠️  Needs Attention — Scores declined; re-engagement recommended', cls:'g-risk'},
+    {id:'canc',label:'🔄  Cancelled Engagements', cls:'g-canc'},
+  ];
+  let html='';
+  groups.forEach(g=>{
+    const items=list.filter(a=>a.verdict===g.id);
+    if(!items.length) return;
+    html+=`<div class="group-label ${g.cls}"><span>${g.label}</span><div class="gl-line"></div></div>`;
+    html+=`<div class="cards-grid">`;
+    items.forEach(a=>{ html+=buildCard(a); });
+    html+=`</div>`;
+  });
+  main.innerHTML=html;
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); activeFilter=btn.dataset.filter; applyFilter();
+  });
+});
+document.getElementById('sort-select').addEventListener('change',applyFilter);
+document.getElementById('search-input').addEventListener('input',applyFilter);
+applyFilter();
+</script>
+</body>
+</html>
