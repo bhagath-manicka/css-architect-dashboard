@@ -70,7 +70,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .score-cell.pos{border-bottom-color:var(--green);}
 .score-cell.neg{border-bottom-color:var(--red);}
 .score-cell.neu{border-bottom-color:#9DB0C0;}
-.score-cell .sc-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#64748B;}
+.score-cell .sc-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;color:#64748B;}
 .score-cell .sc-val{font-size:22px;font-weight:900;line-height:1.1;margin-top:2px;}
 .score-cell .sc-delta{font-size:10px;font-weight:700;margin-top:2px;padding:1px 6px;border-radius:4px;display:inline-block;}
 .d-pos{background:#DCFCE7;color:#15803D;}
@@ -177,7 +177,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <option value="css-desc">CSS Score ↓</option>
     <option value="css-asc">CSS Score ↑</option>
     <option value="css-delta">CSS Movement ↓</option>
-    <option value="ths-delta">THS Movement ↓</option>
+    <option value="ths-delta">Tech Health Movement ↓</option>
     <option value="name">A → Z</option>
   </select>
   <input class="search-box" type="text" placeholder="Search account..." id="search-input">
@@ -272,7 +272,7 @@ function spark(vals,color,h=38){
 }
 function buildCard(a){
   const obs=getObs(a),vCls={up:'up',down:'down',flat:'flat',canc:'canc'}[a.verdict];
-  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})"><div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}${a.cancelled?' <span style="background:rgba(245,158,11,0.15);color:#FCD34D;font-size:9px;padding:1px 6px;border-radius:4px;font-weight:700">Cancelled</span>':''}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('THS',lastV(a.ths),a.thsD,false)}${sCell('CES',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?a.adp.p.split(' ')[0]:'Adopt',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
+  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})"><div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}${a.cancelled?' <span style="background:rgba(245,158,11,0.15);color:#FCD34D;font-size:9px;padding:1px 6px;border-radius:4px;font-weight:700">Cancelled</span>':''}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':' Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
 }
 function openModal(name){
   const a=ACCS.find(x=>x.name===name);if(!a)return;
