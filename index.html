@@ -56,7 +56,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .card.up{border-top:3px solid var(--green);}
 .card.down{border-top:3px solid var(--red);}
 .card.flat{border-top:3px solid #9DB0C0;}
-.card.canc{border-top:3px solid var(--amber);}
+.card.canc{border:2px solid #F59E0B;background:#FFFBEB;}.card.canc .score-row{opacity:0.45;}.card.canc .arc-wrap{opacity:0.5;}
 .card.up::before{content:'';position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(21,128,61,0.06),transparent);border-radius:20px 20px 0 0;}
 .card.down::before{content:'';position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(220,38,38,0.05),transparent);border-radius:20px 20px 0 0;}
 .card-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;position:relative;z-index:1;}
@@ -82,7 +82,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .card-obs .obs-text{font-size:11px;line-height:1.4;color:#334155;}
 .card-obs.up{background:#F0FDF4;border-color:#BBF7D0;}
 .card-obs.down{background:#FEF2F2;border-color:#FECACA;}
-.card-obs.flat{background:#FFFBEB;border-color:#FDE68A;}
+.card-obs.flat{background:#FFFBEB;border-color:#FDE68A;}.canc-banner{background:#F59E0B;color:#FFFFFF;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:7px 14px;margin:-24px -22px 16px -22px;border-radius:18px 18px 0 0;display:flex;align-items:center;gap:8px;}
 .card-obs .obs-icon{font-size:14px;flex-shrink:0;}
 .exec-section{max-width:1400px;margin:0 auto;padding:0 48px 40px;}
 .exec-section-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:#475569;margin-bottom:20px;margin-top:8px;display:flex;align-items:center;gap:12px;}
@@ -272,7 +272,7 @@ function spark(vals,color,h=38){
 }
 function buildCard(a){
   const obs=getObs(a),vCls={up:'up',down:'down',flat:'flat',canc:'canc'}[a.verdict];
-  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})"><div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}${a.cancelled?' <span style="background:rgba(245,158,11,0.15);color:#FCD34D;font-size:9px;padding:1px 6px;border-radius:4px;font-weight:700">Cancelled</span>':''}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':' Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
+  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})">${a.cancelled?'<div class=\"canc-banner\">⚠ Engagement Cancelled — Incomplete Data</div>':''}<div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':' Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
 }
 function openModal(name){
   const a=ACCS.find(x=>x.name===name);if(!a)return;
