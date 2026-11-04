@@ -203,6 +203,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <div class="modal" id="modal-inner"></div>
 </div>
 <script>
+try{
 const MONTHS=['Oct-25','Nov-25','Dec-25','Jan-26','Feb-26','Mar-26','Apr-26','May-26','Jun-26','Jul-26','Aug-26','Sep-26'];
 const RAW=[
   {name:'ANZ Bank Insto',eng:'Account Team Review',intv:8,cancelled:false,geo:'APAC',ths:[78,78,82,78,82,78,79,80,81,82,80,83],ces:[100,100,100,100,100,100,100,100,100,100,100,100],adp:{p:'FSC',v:[55,55,54,54,54,54,54,54,55,61,62,62]},css:[70,70,72,71,72,71,71,71,72,74,74,74]},
@@ -341,6 +342,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('cli
 document.getElementById('sort-select').addEventListener('change',applyFilter);
 document.getElementById('search-input').addEventListener('input',applyFilter);
 applyFilter();
+}catch(e){document.body.innerHTML='<div style="padding:40px;font-family:monospace;color:red;font-size:14px;"><strong>JS ERROR:</strong><br>'+e.message+'<br><br>'+e.stack+'</div>';}
 </script>
 </body>
 </html>
