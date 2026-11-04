@@ -24,7 +24,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .hyp-title{font-size:13px;font-weight:800;color:#92400E;letter-spacing:0.3px;margin-bottom:5px;text-transform:uppercase;}
 .hyp-body{font-size:12px;color:#44403C;line-height:1.8;max-width:860px;}
 .hyp-body strong{color:#92400E;}
-.kpi-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;display:grid;grid-template-columns:repeat(5,1fr);}
+.kpi-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;display:grid;grid-template-columns:repeat(4,1fr);}
 .kpi{padding:20px 28px;border-right:1px solid #DBEAFE;}
 .kpi:last-child{border-right:none;}
 .kpi-val{font-size:36px;font-weight:900;line-height:1;}
@@ -247,7 +247,7 @@ const active=ACCS.filter(a=>!a.cancelled);
 const ups=active.filter(a=>a.verdict==='up').length,downs=active.filter(a=>a.verdict==='down').length,flats=active.filter(a=>a.verdict==='flat').length;
 const avgCss=r1(active.filter(a=>a.cssLast!==null).reduce((s,a)=>s+a.cssLast,0)/active.filter(a=>a.cssLast!==null).length);
 const avgThsD=r1(active.filter(a=>a.thsD!==null).reduce((s,a)=>s+a.thsD,0)/active.filter(a=>a.thsD!==null).length);
-document.getElementById('kpi-strip').innerHTML=`<div class="kpi"><div class="kpi-val green">${ups}</div><div class="kpi-label">Score Trended Up</div><div class="kpi-sub">Scores moved up during this period</div></div><div class="kpi"><div class="kpi-val amber">${flats}</div><div class="kpi-label">Score Held Steady</div><div class="kpi-sub">No meaningful change observed</div></div><div class="kpi"><div class="kpi-val red">${downs}</div><div class="kpi-label">Score Trended Down</div><div class="kpi-sub">Scores fell — worth understanding</div></div><div class="kpi"><div class="kpi-val blue">${avgCss}</div><div class="kpi-label">Avg CSS (Sep-26)</div><div class="kpi-sub">Across 13 active accounts</div></div><div class="kpi"><div class="kpi-val ${avgThsD>=0?'green':'red'}">${avgThsD>=0?'+':''}${avgThsD}</div><div class="kpi-label">Avg THS Movement</div><div class="kpi-sub">Observed avg movement</div></div>`;
+document.getElementById('kpi-strip').innerHTML=`<div class="kpi"><div class="kpi-val green">${ups}</div><div class="kpi-label">Score Trended Up</div><div class="kpi-sub">Scores moved up during this period</div></div><div class="kpi"><div class="kpi-val amber">${flats}</div><div class="kpi-label">Score Held Steady</div><div class="kpi-sub">No meaningful change observed</div></div><div class="kpi"><div class="kpi-val red">${downs}</div><div class="kpi-label">Score Trended Down</div><div class="kpi-sub">Scores fell — worth understanding</div></div><div class="kpi"><div class="kpi-val blue">${avgCss}</div><div class="kpi-label">Avg CSS (Sep-26)</div><div class="kpi-sub">Across 13 active accounts</div></div>`;
 function arcSVG(val){
   const cx=80,cy=80,r=62,sa=-200,ta=220,toR=d=>d*Math.PI/180,pct=Math.max(0,Math.min(val||0,100));
   const fe=sa+ta*(pct/100),be=sa+ta;
