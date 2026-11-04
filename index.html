@@ -272,7 +272,8 @@ function spark(vals,color,h=38){
 }
 function buildCard(a){
   const obs=getObs(a),vCls={up:'up',down:'down',flat:'flat',canc:'canc'}[a.verdict];
-  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})">${a.cancelled?'<div class=\"canc-banner\">⚠ Engagement Cancelled — Incomplete Data</div>':''}<div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':' Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
+  const cancBanner=a.cancelled?'<div class="canc-banner">Engagement Cancelled</div>':'';
+  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})">${cancBanner}<div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':'Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
 }
 function openModal(name){
   const a=ACCS.find(x=>x.name===name);if(!a)return;
