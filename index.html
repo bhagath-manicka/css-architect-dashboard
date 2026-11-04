@@ -168,11 +168,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 <div class="kpi-strip" id="kpi-strip"></div>
 <div class="controls">
-  <button class="filter-btn active" data-filter="all">All Accounts</button>
-  <button class="filter-btn" data-filter="up">📈 Trended Up</button>
-  <button class="filter-btn" data-filter="flat">→ Held Steady</button>
-  <button class="filter-btn" data-filter="down">📉 Trended Down</button>
-  <button class="filter-btn" data-filter="canc">Cancelled</button>
+  <button class="filter-btn active" id="fb-all" onclick="setFilter('all')">All Accounts</button>
+  <button class="filter-btn" id="fb-up" onclick="setFilter('up')">📈 Trended Up</button>
+  <button class="filter-btn" id="fb-flat" onclick="setFilter('flat')">→ Held Steady</button>
+  <button class="filter-btn" id="fb-down" onclick="setFilter('down')">📉 Trended Down</button>
+  <button class="filter-btn" id="fb-canc" onclick="setFilter('canc')">Cancelled</button>
   <select class="sort-select" id="sort-select">
     <option value="css-desc">CSS Score ↓</option>
     <option value="css-asc">CSS Score ↑</option>
@@ -338,7 +338,7 @@ function renderGrid(list){
   groups.forEach(g=>{const items=list.filter(a=>a.verdict===g.id);if(!items.length)return;html+=`<div class="group-label ${g.cls}"><span>${g.label}</span><div class="gl-line"></div></div><div class="cards-grid">`;items.forEach(a=>{html+=buildCard(a);});html+=`</div>`;});
   main.innerHTML=html;
 }
-document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=btn.dataset.filter;applyFilter();});});
+function setFilter(f){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));var fb=document.getElementById('fb-'+f);if(fb)fb.classList.add('active');activeFilter=f;applyFilter();}
 document.getElementById('sort-select').addEventListener('change',applyFilter);
 document.getElementById('search-input').addEventListener('input',applyFilter);
 applyFilter();
