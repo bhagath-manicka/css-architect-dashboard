@@ -49,14 +49,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .group-label.g-up{color:#15803D;}
 .group-label.g-flat{color:#475569;}
 .group-label.g-down{color:#DC2626;}
-.group-label.g-canc{color:#B45309;}
+
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:40px;}
 .card{background:#FFFFFF;border-radius:20px;border:1px solid #BFDBFE;padding:24px 22px 20px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;cursor:pointer;box-shadow:0 2px 12px rgba(1,118,211,0.07);}
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(1,118,211,0.18);border-color:#93C5FD;}
 .card.up{border-top:3px solid var(--green);}
 .card.down{border-top:3px solid var(--red);}
 .card.flat{border-top:3px solid #9DB0C0;}
-.card.canc{border:2px solid #F59E0B;background:#FFFBEB;position:relative;overflow:hidden;}.card.canc .score-row{opacity:0.3;pointer-events:none;}.card.canc .arc-wrap{opacity:0.3;}.card.canc .card-obs{opacity:0.6;}
+
 .card.up::before{content:'';position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(21,128,61,0.06),transparent);border-radius:20px 20px 0 0;}
 .card.down::before{content:'';position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(220,38,38,0.05),transparent);border-radius:20px 20px 0 0;}
 .card-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;position:relative;z-index:1;}
@@ -82,7 +82,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .card-obs .obs-text{font-size:11px;line-height:1.4;color:#334155;}
 .card-obs.up{background:#F0FDF4;border-color:#BBF7D0;}
 .card-obs.down{background:#FEF2F2;border-color:#FECACA;}
-.card-obs.flat{background:#FFFBEB;border-color:#FDE68A;}.canc-banner{background:#F59E0B;color:#7C2D12;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;padding:10px 16px;margin:-24px -22px 18px -22px;border-radius:18px 18px 0 0;display:flex;align-items:center;gap:8px;}.canc-stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:42px;font-weight:900;color:rgba(245,158,11,0.12);letter-spacing:4px;text-transform:uppercase;pointer-events:none;white-space:nowrap;z-index:0;}
+.card-obs.flat{background:#FFFBEB;border-color:#FDE68A;}
 .card-obs .obs-icon{font-size:14px;flex-shrink:0;}
 .exec-section{max-width:1400px;margin:0 auto;padding:0 48px 40px;}
 .exec-section-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:#475569;margin-bottom:20px;margin-top:8px;display:flex;align-items:center;gap:12px;}
@@ -137,7 +137,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .modal-obs.up{background:#F0FDF4;border-left:3px solid #15803D;color:#166534;}
 .modal-obs.down{background:#FEF2F2;border-left:3px solid #DC2626;color:#991B1B;}
 .modal-obs.flat{background:#FFFBEB;border-left:3px solid #B45309;color:#92400E;}
-.modal-obs.canc{background:#F8FAFC;border-left:3px solid #94A3B8;color:#475569;}
+
 .modal-question{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12px;color:#0176D3;line-height:1.7;}
 .modal-question strong{color:#032D60;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
 </style>
@@ -172,7 +172,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <button class="filter-btn" id="fb-up" onclick="setFilter('up')">📈 Trended Up</button>
   <button class="filter-btn" id="fb-flat" onclick="setFilter('flat')">→ Held Steady</button>
   <button class="filter-btn" id="fb-down" onclick="setFilter('down')">📉 Trended Down</button>
-  <button class="filter-btn" id="fb-canc" onclick="setFilter('canc')">Cancelled</button>
+
   <select class="sort-select" id="sort-select">
     <option value="css-desc">CSS Score ↓</option>
     <option value="css-asc">CSS Score ↑</option>
@@ -218,8 +218,8 @@ const RAW=[
   {name:'Optus',eng:'PSL Enablement Guidance',intv:9,cancelled:false,geo:'APAC',ths:[83,85,86,85,82,86,81,80,81,81,81,79],ces:[100,100,100,100,100,100,100,100,100,100,100,100],adp:{p:'CME Cloud',v:[null,null,null,null,null,null,null,null,null,4,3,4]},css:[40,38,37,33,33,36,35,35,35,39,37,38]},
   {name:'Orange Cyberdefense',eng:'Security Overview',intv:9,cancelled:false,geo:'EMEA',ths:[76,75,80,81,80,77,75,73,75,77,75,71],ces:[77,77,77,100,100,100,100,100,100,100,100,100],adp:{p:null,v:[null,null,null,null,null,null,null,null,null,null,null,null]},css:[72,73,74,79,81,80,79,78,79,79,79,78]},
   {name:'Fennia',eng:'Proactive Outreach Support',intv:7,cancelled:false,geo:'EMEA',ths:[76,75,75,73,73,73,73,70,72,68,67,74],ces:[100,100,100,100,100,100,100,100,100,100,100,100],adp:{p:'FSC',v:[51,49,49,53,52,51,51,55,19,20,21,18]},css:[54,54,54,56,57,54,55,55,53,52,53,54]},
-  {name:'Sky Business',eng:'Security Threat Model',intv:9,cancelled:true,geo:'EMEA',ths:[70,72,74,75,71,70,71,71,75,66,63,64],ces:[100,100,100,100,100,100,100,100,100,100,100,100],adp:{p:'CME Cloud',v:[82,81,80,81,81,82,83,81,81,83,83,82]},css:[75,76,75,77,75,76,77,77,78,75,74,75]},
-  {name:'William Reed',eng:'Go-Live Precheck',intv:9,cancelled:true,geo:'EMEA',ths:[78,78,81,81,81,80,78,73,76,74,76,74],ces:[20,21,64,75,77,77,66,77,77,100,100,100],adp:{p:'Revenue Cloud',v:[0,25,25,25,17,25,26,26,23,95,93,96]},css:[57,58,64,66,64,64,65,66,69,77,78,80]},
+  {name:'Sky Business',eng:'Security Threat Model',intv:9,cancelled:false,geo:'EMEA',ths:[70,72,74,75,71,70,71,71,75,66,63,64],ces:[100,100,100,100,100,100,100,100,100,100,100,100],adp:{p:'CME Cloud',v:[82,81,80,81,81,82,83,81,81,83,83,82]},css:[75,76,75,77,75,76,77,77,78,75,74,75]},
+  {name:'William Reed',eng:'Go-Live Precheck',intv:9,cancelled:false,geo:'EMEA',ths:[78,78,81,81,81,80,78,73,76,74,76,74],ces:[20,21,64,75,77,77,66,77,77,100,100,100],adp:{p:'Revenue Cloud',v:[0,25,25,25,17,25,26,26,23,95,93,96]},css:[57,58,64,66,64,64,65,66,69,77,78,80]},
 ];
 function avgOf(a){const v=a.filter(x=>x!==null&&x!==undefined);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
 function r1(x){return x!==null&&x!==undefined?Math.round(x*10)/10:null;}
@@ -243,11 +243,11 @@ function getObs(a){
   if(a.verdict==='down')return{obs:`CSS ${cd} (${a.cssD>0?'+':''}${a.cssD} pts) and THS ${td} (${a.thsD>0?'+':''}${a.thsD} pts) during the engagement period. This account warrants a closer look.`,q:'Did the engagement recommendations get implemented? What account-level headwinds existed that we may not have had visibility into?',icon:'📉'};
   return{obs:'Scores held broadly steady across the engagement period. No strong movement in either direction was observed.',q:'Is stability a positive outcome here — i.e., preventing a decline — or was there unrealized potential for improvement?',icon:'→'};
 }
-const active=ACCS.filter(a=>!a.cancelled);
+const active=ACCS;
 const ups=active.filter(a=>a.verdict==='up').length,downs=active.filter(a=>a.verdict==='down').length,flats=active.filter(a=>a.verdict==='flat').length;
 const avgCss=r1(active.filter(a=>a.cssLast!==null).reduce((s,a)=>s+a.cssLast,0)/active.filter(a=>a.cssLast!==null).length);
 const avgThsD=r1(active.filter(a=>a.thsD!==null).reduce((s,a)=>s+a.thsD,0)/active.filter(a=>a.thsD!==null).length);
-document.getElementById('kpi-strip').innerHTML=`<div class="kpi"><div class="kpi-val green">${ups}</div><div class="kpi-label">Score Trended Up</div><div class="kpi-sub">Scores moved up during this period</div></div><div class="kpi"><div class="kpi-val amber">${flats}</div><div class="kpi-label">Score Held Steady</div><div class="kpi-sub">No meaningful change observed</div></div><div class="kpi"><div class="kpi-val red">${downs}</div><div class="kpi-label">Score Trended Down</div><div class="kpi-sub">Scores fell — worth understanding</div></div><div class="kpi"><div class="kpi-val blue">${avgCss}</div><div class="kpi-label">Avg CSS (Sep-26)</div><div class="kpi-sub">Across 13 active accounts</div></div>`;
+document.getElementById('kpi-strip').innerHTML=`<div class="kpi"><div class="kpi-val green">${ups}</div><div class="kpi-label">Score Trended Up</div><div class="kpi-sub">Scores moved up during this period</div></div><div class="kpi"><div class="kpi-val amber">${flats}</div><div class="kpi-label">Score Held Steady</div><div class="kpi-sub">No meaningful change observed</div></div><div class="kpi"><div class="kpi-val red">${downs}</div><div class="kpi-label">Score Trended Down</div><div class="kpi-sub">Scores fell — worth understanding</div></div><div class="kpi"><div class="kpi-val blue">${avgCss}</div><div class="kpi-label">Avg CSS (Sep-26)</div><div class="kpi-sub">All 15 accounts</div></div>`;
 function arcSVG(val){
   const cx=80,cy=80,r=62,sa=-200,ta=220,toR=d=>d*Math.PI/180,pct=Math.max(0,Math.min(val||0,100));
   const fe=sa+ta*(pct/100),be=sa+ta;
@@ -282,7 +282,7 @@ function openModal(name){
     const bg=d>1?'rgba(34,197,94,0.15)':d<-1?'rgba(239,68,68,0.15)':'rgba(255,255,255,0.07)',fc=d>1?'#4ADE80':d<-1?'#F87171':'#9DB0C0',ds=d!==null?(d>0?'+':'')+d:'—';
     return `<div class="ms-card"><div class="ms-card-title">${title}</div>${noData?`<div style="color:rgba(255,255,255,0.25);font-style:italic;font-size:11px;padding:8px 0">No data available</div>`:`<div class="ms-ba"><div class="ms-ba-num before"><div class="n">${Math.round(bfr??0)}</div><div class="l">Before</div></div><div class="ms-arrow">${d>1?'↗':d<-1?'↘':'→'}</div><div class="ms-ba-num after"><div class="n">${Math.round(aft??0)}</div><div class="l">After</div></div></div><div class="ms-delta-badge" style="background:${bg};color:${fc}">${ds} pts observed</div><div class="ms-spark">${spark(vals,color)}</div>`}</div>`;
   }
-  document.getElementById('modal-inner').innerHTML=`<button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">${a.name}</div><div class="modal-sub">${a.eng} · ${a.geo} · Engagement closed: ${a.cancelled?'N/A':MONTHS[a.intv]}</div><div class="modal-caveat">📌 <strong>Context:</strong> We weren't tracking these scores when this engagement happened. What you're seeing is a retroactive view — scores during and after the engagement period. We're not reading causation here; we're learning what the numbers did and starting to ask better questions.</div><div class="modal-scores">${msC('🔧 Technical Health','#60A5FA',a.thsBfr,a.thsAft,a.thsD,a.ths,false)}${msC('🎓 Customer Expertise','#34D399',a.cesBfr,a.cesAft,a.cesD,a.ces,false)}${msC('📈 Adoption'+(a.adp.p?' — '+a.adp.p:''),'#A78BFA',a.adpBfr,a.adpAft,a.adpD,a.adp.v,a.noAdp)}${msC('🎯 Customer Success','#F472B6',a.cssBfr,a.cssAft,a.cssD,a.css,false)}</div><div class="modal-obs ${vCls}"><strong>${obs.icon} Observation:</strong> ${obs.obs}</div><div class="modal-question"><strong>🔍 Open Question to Explore</strong>${obs.q}</div>`;
+  document.getElementById('modal-inner').innerHTML=`<button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">${a.name}</div><div class="modal-sub">${a.eng} · ${a.geo} · Engagement closed: ${MONTHS[a.intv]}</div><div class="modal-caveat">📌 <strong>Context:</strong> We weren't tracking these scores when this engagement happened. What you're seeing is a retroactive view — scores during and after the engagement period. We're not reading causation here; we're learning what the numbers did and starting to ask better questions.</div><div class="modal-scores">${msC('🔧 Technical Health','#60A5FA',a.thsBfr,a.thsAft,a.thsD,a.ths,false)}${msC('🎓 Customer Expertise','#34D399',a.cesBfr,a.cesAft,a.cesD,a.ces,false)}${msC('📈 Adoption'+(a.adp.p?' — '+a.adp.p:''),'#A78BFA',a.adpBfr,a.adpAft,a.adpD,a.adp.v,a.noAdp)}${msC('🎯 Customer Success','#F472B6',a.cssBfr,a.cssAft,a.cssD,a.css,false)}</div><div class="modal-obs ${vCls}"><strong>${obs.icon} Observation:</strong> ${obs.obs}</div><div class="modal-question"><strong>🔍 Open Question to Explore</strong>${obs.q}</div>`;
   document.getElementById('modal-bg').classList.add('open');
 }
 function closeModal(e){if(!e||e.target===document.getElementById('modal-bg'))document.getElementById('modal-bg').classList.remove('open');}
