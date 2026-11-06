@@ -105,12 +105,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .ns-card{background:#FFFFFF;border:1px solid #BFDBFE;border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(1,118,211,0.06);}
 .ns-card .ns-num{font-size:24px;font-weight:900;color:#0176D3;line-height:1;margin-bottom:8px;}
 .ns-card .ns-title{font-size:12px;font-weight:700;color:#0F172A;margin-bottom:6px;}
-.ns-card .ns-body{font-size:11px;color:#475569;line-height:1.6;}
+.ns-card .ns-body{font-size:13px;color:#475569;line-height:1.6;}
 .meth-section{background:#F8FAFC;border-top:2px solid #BFDBFE;padding:28px 48px 40px;}
 .meth-inner{max-width:1400px;margin:0 auto;}
 .meth-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.7px;color:#475569;margin-bottom:14px;}
 .meth-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
-.meth-item{font-size:11px;color:#475569;line-height:1.7;padding-left:12px;border-left:2px solid #93C5FD;}
+.meth-item{font-size:13px;color:#475569;line-height:1.6;padding-left:12px;border-left:2px solid #93C5FD;}
 .meth-item strong{color:#0F172A;display:block;margin-bottom:2px;}
 .modal-bg{position:fixed;inset:0;background:rgba(3,45,96,0.5);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;}
 .modal-bg.open{display:flex;}
@@ -299,21 +299,21 @@ const FAQS=[
 document.getElementById('faq-grid').innerHTML=FAQS.map((f,i)=>`<div class="faq-card" id="faq-${i}" onclick="toggleFaq(${i})"><div class="faq-q"><span class="faq-q-ico">${f.ico}</span><span>${f.q}</span><span class="faq-chevron">▼</span></div><div class="faq-a">${f.a}<div class="next-step">🔬 <strong>To validate:</strong> ${f.next}</div></div></div>`).join('');
 function toggleFaq(i){document.getElementById('faq-'+i).classList.toggle('open');}
 const NS=[
-  {n:'01',t:"Measure from day one",b:"Stop looking back. Start every new engagement by recording baseline scores and tracking monthly. This is how we build real before/during/after data — not retroactive snapshots."},
-  {n:'02',t:"Make scores part of the conversation",b:"Share current score trends with architects at kickoff. Let the numbers inform what we're trying to move — not just what we're being asked to review."},
-  {n:'03',t:"Build a comparison baseline",b:"Identify accounts similar in profile that are not receiving architect engagement. Their score trajectories are our reference point for whether our presence changes anything."},
-  {n:'04',t:"Track what gets implemented",b:"Architect recommendations don't move scores on their own. Start connecting which recommendations get actioned to what changes in the numbers over the following months."},
-  {n:'05',t:"Grow to 50+ accounts",b:"15 is a start — a first look. We need volume over multiple quarters before this becomes a pattern we can act on with confidence."},
-  {n:'06',t:"Review this quarterly",b:"Commit to revisiting this view every quarter. Not to prove a point — but because scores matter and we should know what they're doing on every account we touch."},
+  {n:'01',t:"Measure from day one",b:"Baseline scores at kickoff. Track monthly. No more retroactive guessing."},
+  {n:'02',t:"Scores in every kickoff",b:"Show architects what we're trying to move — before the engagement starts."},
+  {n:'03',t:"Build a comparison baseline",b:"Find similar accounts without engagement. That's our control group."},
+  {n:'04',t:"Track what gets implemented",b:"Recommendations only matter if actioned. Connect the dots to score movement."},
+  {n:'05',t:"Grow to 50+ accounts",b:"15 is a starting point. We need volume before we can see a real pattern."},
+  {n:'06',t:"Review this quarterly",b:"Score trends change. So should our understanding. Review every quarter."},
 ];
 document.getElementById('next-steps').innerHTML=NS.map(s=>`<div class="ns-card"><div class="ns-num">${s.n}</div><div class="ns-title">${s.t}</div><div class="ns-body">${s.b}</div></div>`).join('');
 const METH=[
-  {t:"What the data is",b:"CSS, Technical Health, Customer Expertise, and Product Adoption scores for 15 Industries accounts. Scores are monthly, Oct 2025 – Sep 2026. This is a retroactive first look — scores were not being tracked against architect engagements when these occurred."},
-  {t:"How before/after is calculated",b:"Scores in months before the engagement close month are averaged as Before. Scores in months after are averaged as After. The delta is the difference. This is indicative — not a controlled measurement."},
-  {t:"What trend means here",b:"Accounts are labelled Trended Up if THS or CSS delta exceeded +1 pt, Trended Down if either fell below -1 pt. This threshold is a judgment call, not a statistically derived cutoff."},
-  {t:"What this analysis cannot tell us",b:"Whether architect engagement caused score movement. What other activities happened in parallel. How these accounts compare to similar accounts without engagement. Whether score changes are durable."},
-  {t:"Engagement data source",b:"Engagement types and close months were manually mapped from architect activity logs. There may be inaccuracies in timing or scope. Going forward, this data will be tracked in real time from engagement start."},
-  {t:"What changes going forward",b:"Future analysis will track scores from the day an engagement opens — building a real-time before/during/after dataset rather than a retroactive one. This view is the baseline we are building from."},
+  {t:"What the data is",b:"CSS, THS, CES, Adoption — 15 accounts, monthly, Oct 2025–Sep 2026. Retroactive. Scores were not tracked against engagements at the time."},
+  {t:"How before/after is calculated",b:"Average of months before engagement close = Before. Average after = After. Delta is the difference. Indicative only."},
+  {t:"What trend means here",b:"Trended Up = THS or CSS delta >+1 pt. Trended Down = <-1 pt. A judgment call threshold, not statistical."},
+  {t:"What this cannot tell us",b:"Causation. Concurrent activities. How these compare to similar accounts without engagement. Whether changes last."},
+  {t:"Engagement data source",b:"Manually mapped from activity logs. Timing may be approximate. Will be tracked in real time going forward."},
+  {t:"What changes going forward",b:"Future runs track from engagement open date — real before/during/after, not hindsight. This view is the baseline."},
 ];
 document.getElementById('meth-grid').innerHTML=METH.map(m=>`<div class="meth-item"><strong>${m.t}</strong>${m.b}</div>`).join('');
 let activeFilter='all';
