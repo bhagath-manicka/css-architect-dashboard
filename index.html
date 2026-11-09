@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proactive Motion — Architect Engagement: Score Observation Study</title>
+<title>Proactive Motion — Bringing Scores into the Conversation</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 :root{--navy:#032D60;--blue:#0176D3;--blue-lt:#1B96FF;--teal:#06A59A;--green:#15803D;--red:#DC2626;--amber:#B45309;--bg:#EFF6FF;--bg2:#FFFFFF;--bg3:#F0F7FF;--border:#BFDBFE;--muted:#64748B;--white:#FFFFFF;--text:#0F172A;--text2:#1E3A5F;}
@@ -145,14 +145,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <body>
 <div class="header">
   <div class="header-inner">
-    <h1>Proactive Motion — Architect Engagement: Score Observation Study</h1>
-    <p>A first look at CSS score trends across 15 accounts that received architect engagement. This is an <strong>observational starting point</strong> — not a proof of causation. The goal is to surface patterns, ask better questions, and design a more rigorous study.</p>
+    <h1>Proactive Motion — Bringing Scores into the Conversation</h1>
+    <p>We have been engaging with these accounts — but not with these numbers in the room. This changes that. Scores are now part of how we prepare, how we show up, and what we bring to account teams as a starting point for a better conversation.</p>
     <div class="header-meta">
       <span class="header-tag">15 Accounts Observed</span>
       <span class="header-tag">Oct 2025 – Sep 2026</span>
       <span class="header-tag">4 Score Dimensions</span>
       <span class="header-tag">EMEA · IST · APAC</span>
-      <span class="header-tag" style="background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.4);color:#92400E;">First Look — Retroactive</span>
+      <span class="header-tag" style="background:rgba(1,118,211,0.12);border-color:rgba(1,118,211,0.3);color:#032D60;">Scores Now In the Room</span>
     </div>
   </div>
   <div class="header-right">Report: Oct 2026<br>Industries Cloud<br>Salesforce LSC</div>
@@ -161,8 +161,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <div class="hyp-inner">
     <div class="hyp-icon">💡</div>
     <div>
-      <div class="hyp-title">How This Started</div>
-      <div class="hyp-body">Our architects have been engaged in the proactive motion — design reviews, security audits, go-live checks, technical debt sessions. <strong>What we weren't doing was watching what happened to the scores on these accounts.</strong> We went back and looked at 15 accounts. Some numbers moved up. Some moved down. Some held. We are not claiming architect engagement caused any of this. <strong>We genuinely don't know yet.</strong> What we're asking is: can we see a signal? And if there is one, how do we build on it? Going forward, <strong>we will spend real time looking at these numbers, understanding the needs behind them, and delivering based on what they tell us.</strong></div>
+      <div class="hyp-title">Why We Are Looking at This Now</div>
+      <div class="hyp-body">We have been running the proactive motion — design reviews, security sessions, go-live checks — without these scores in the room. <strong>No decisions were being made against them. No discussions were framed around them.</strong> That changes now. We are not saying architects move these numbers. We are not claiming a direct lever. What we are saying is: <strong>these scores tell us something about the account</strong> — their technical health, their adoption maturity, their expertise gaps. When an architect walks into a conversation, they should walk in with this context. <strong>The goal is to give account owners a sharper, more informed partner — one who sees the same numbers they do.</strong></div>
     </div>
   </div>
 </div>
@@ -184,18 +184,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 <div class="main" id="main-grid"></div>
 <div class="exec-section">
-  <div class="exec-section-title"><span>What these numbers make us ask</span><div class="tl-line"></div></div>
+  <div class="exec-section-title"><span>What account teams will ask — and how we answer</span><div class="tl-line"></div></div>
   <div class="faq-grid" id="faq-grid"></div>
 </div>
 <div class="next-strip">
   <div class="next-inner">
-    <div class="next-title">How we build this into our motion going forward</div>
+    <div class="next-title">How we use scores in every engagement going forward</div>
     <div class="next-steps" id="next-steps"></div>
   </div>
 </div>
 <div class="meth-section">
   <div class="meth-inner">
-    <div class="meth-title">Methodology &amp; Limitations</div>
+    <div class="meth-title">How to Read This Data</div>
     <div class="meth-grid" id="meth-grid"></div>
   </div>
 </div>
@@ -273,7 +273,7 @@ function spark(vals,color,h=38){
 function buildCard(a){
   const obs=getObs(a),vCls={up:'up',down:'down',flat:'flat',canc:'canc'}[a.verdict];
   const cancBanner=a.cancelled?'<div class="canc-banner">⚠ Engagement Cancelled — Incomplete Data</div><div class="canc-stamp">CANCELLED</div>':'';
-  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})">${cancBanner}<div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':'Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Observation</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
+  return `<div class="card ${vCls}" onclick="openModal(${JSON.stringify(a.name)})">${cancBanner}<div class="card-head"><div><div class="card-name">${a.name}</div><div class="card-eng">${a.eng}</div></div><div class="card-geo">${a.geo}</div></div><div class="arc-wrap">${arcSVG(a.cssLast)}</div><div class="score-row">${sCell('Tech Health',lastV(a.ths),a.thsD,false)}${sCell('Cust Expertise',lastV(a.ces),a.cesD,false)}${sCell(a.adp.p?'Adoption':'Adoption',a.noAdp?null:lastV(a.adp.v),a.adpD,a.noAdp)}</div><div class="card-obs ${vCls}"><span class="obs-icon">${obs.icon}</span><div><div class="obs-label">Score Context</div><div class="obs-text">${obs.obs}</div></div></div></div>`;
 }
 function openModal(name){
   const a=ACCS.find(x=>x.name===name);if(!a)return;
@@ -282,38 +282,38 @@ function openModal(name){
     const bg=d>1?'rgba(34,197,94,0.15)':d<-1?'rgba(239,68,68,0.15)':'rgba(255,255,255,0.07)',fc=d>1?'#4ADE80':d<-1?'#F87171':'#9DB0C0',ds=d!==null?(d>0?'+':'')+d:'—';
     return `<div class="ms-card"><div class="ms-card-title">${title}</div>${noData?`<div style="color:rgba(255,255,255,0.25);font-style:italic;font-size:11px;padding:8px 0">No data available</div>`:`<div class="ms-ba"><div class="ms-ba-num before"><div class="n">${Math.round(bfr??0)}</div><div class="l">Before</div></div><div class="ms-arrow">${d>1?'↗':d<-1?'↘':'→'}</div><div class="ms-ba-num after"><div class="n">${Math.round(aft??0)}</div><div class="l">After</div></div></div><div class="ms-delta-badge" style="background:${bg};color:${fc}">${ds} pts observed</div><div class="ms-spark">${spark(vals,color)}</div>`}</div>`;
   }
-  document.getElementById('modal-inner').innerHTML=`<button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">${a.name}</div><div class="modal-sub">${a.eng} · ${a.geo} · Engagement closed: ${MONTHS[a.intv]}</div><div class="modal-caveat">📌 <strong>Context:</strong> We weren't tracking these scores when this engagement happened. What you're seeing is a retroactive view — scores during and after the engagement period. We're not reading causation here; we're learning what the numbers did and starting to ask better questions.</div><div class="modal-scores">${msC('🔧 Technical Health','#60A5FA',a.thsBfr,a.thsAft,a.thsD,a.ths,false)}${msC('🎓 Customer Expertise','#34D399',a.cesBfr,a.cesAft,a.cesD,a.ces,false)}${msC('📈 Adoption'+(a.adp.p?' — '+a.adp.p:''),'#A78BFA',a.adpBfr,a.adpAft,a.adpD,a.adp.v,a.noAdp)}${msC('🎯 Customer Success','#F472B6',a.cssBfr,a.cssAft,a.cssD,a.css,false)}</div><div class="modal-obs ${vCls}"><strong>${obs.icon} Observation:</strong> ${obs.obs}</div><div class="modal-question"><strong>🔍 Open Question to Explore</strong>${obs.q}</div>`;
+  document.getElementById('modal-inner').innerHTML=`<button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">${a.name}</div><div class="modal-sub">${a.eng} · ${a.geo} · Engagement closed: ${MONTHS[a.intv]}</div><div class="modal-caveat">📌 <strong>How to read this:</strong> These scores show what was happening on this account during and after the engagement period. They are context — not a measure of architect impact. Use them to understand the account's health profile and to frame where the conversation should go next.</div><div class="modal-scores">${msC('🔧 Technical Health','#60A5FA',a.thsBfr,a.thsAft,a.thsD,a.ths,false)}${msC('🎓 Customer Expertise','#34D399',a.cesBfr,a.cesAft,a.cesD,a.ces,false)}${msC('📈 Adoption'+(a.adp.p?' — '+a.adp.p:''),'#A78BFA',a.adpBfr,a.adpAft,a.adpD,a.adp.v,a.noAdp)}${msC('🎯 Customer Success','#F472B6',a.cssBfr,a.cssAft,a.cssD,a.css,false)}</div><div class="modal-obs ${vCls}"><strong>${obs.icon} Observation:</strong> ${obs.obs}</div><div class="modal-question"><strong>🔍 Conversation Starter for the Account Team</strong>${obs.q}</div>`;
   document.getElementById('modal-bg').classList.add('open');
 }
 function closeModal(e){if(!e||e.target===document.getElementById('modal-bg'))document.getElementById('modal-bg').classList.remove('open');}
 const FAQS=[
-  {q:"Did the needle move?",ico:'📍',a:"Scores changed. We can't claim credit — CSMs, product updates, and account teams were also involved. Signal is there; cause is unknown.",next:"Record baseline scores at engagement start. Build the before/after curve in real time."},
-  {q:"Why track scores now?",ico:'🔍',a:"We never connected our work to these numbers. Architects delivered, moved on. This is us closing that gap — finally asking what the data shows.",next:"Add score review to every engagement kickoff going forward."},
-  {q:"Is 15 accounts enough?",ico:'📊',a:"No. It's a directional signal, not a proof. Too small, too varied. Useful as a starting point — not a conclusion.",next:"Grow to 50+ accounts over 2 quarters before drawing trends."},
-  {q:"Why did scores drop?",ico:'📉',a:"Too late, wrong fit, or recommendations not actioned. We don't know yet. These are the accounts most worth investigating.",next:"Retrospective with account teams on what was — and wasn't — implemented."},
-  {q:"Was it worth it?",ico:'💰',a:"Can't answer yet. We don't have architect hours per engagement. That's the missing input before any ROI conversation.",next:"Log architect time per engagement from Q1. Pair with ACV-at-risk data."},
-  {q:"Why such varied outcomes?",ico:'🔀',a:"Different engagements hit different levers. A security review and a go-live check are not the same thing. Comparing them on one score loses the nuance.",next:"Analyse sub-dimension movement by engagement type — not just overall CSS."},
-  {q:"How do we improve this?",ico:'🔬',a:"Measure from day one, not hindsight. Baseline at kickoff, track monthly, review 3 months post-close. That's what real data looks like.",next:"Make score tracking a standard step in every new engagement."},
-  {q:"Is 'held steady' a win?",ico:'→',a:"Depends on the trajectory before we arrived. Stabilising a decline is a win. Maintaining a strong score is maintenance. Context matters.",next:"Extend the score window 6 months before engagement start."},
+  {q:"Does the architect improve my score?",ico:'📍',a:"Not directly — and we won't claim that. The architect brings technical knowledge and an outside perspective. What the account team does with that is what moves the score.",next:"Use scores as a shared starting point in every engagement kickoff — not as a target the architect is responsible for."},
+  {q:"Why are you showing me these numbers?",ico:'🔍',a:"Because you deserve a partner who walks in prepared. These scores tell us where the gaps are — technical health, adoption maturity, expertise. That's the context behind every conversation we have.",next:"Architect reviews scope and framing going forward will reference the account's current score profile."},
+  {q:"What can I do with a low score?",ico:'📉',a:"It's a starting point, not a verdict. A low Technical Health score is a conversation — what's driving it, what's been tried, what architecture decisions are compounding it. That's exactly where an architect adds value.",next:"Account teams and architects review sub-dimension scores together at engagement start to identify the most actionable gaps."},
+  {q:"What if my score went down during this period?",ico:'📊',a:"That's important context — not a failure. Scores move for many reasons: product changes, team shifts, platform complexity. The value of having an architect in the room is to help diagnose and prioritise, not to guarantee outcomes.",next:"Declining accounts get a structured retrospective — what was surfaced, what was actioned, what wasn't."},
+  {q:"Who else sees these scores?",ico:'👁',a:"Account teams, CSMs, and now architects. The goal is alignment — everyone working from the same picture. Architects seeing the score before an engagement means the conversation starts in the right place.",next:"Score context shared with architects as standard pre-engagement prep for all new engagements."},
+  {q:"How often will this be reviewed?",ico:'🔄',a:"Quarterly. Scores change, account situations change. This view will be updated and brought into account planning conversations on a regular cadence going forward.",next:"Quarterly score review built into the IST/EMEA/APAC planning rhythm."},
+  {q:"Is this a performance metric for accounts?",ico:'🎯',a:"No. This is a diagnostic tool — not a scorecard. It helps us have better conversations, not pass judgment. High scores aren't rewarded; low scores aren't punished. The point is to help.",next:"Frame all score discussions as 'where are the opportunities' — never as 'why is this low'."},
+  {q:"What happens next with this data?",ico:'🔬',a:"We will track scores from the start of every new engagement — before, during, and after. Over time, that builds a real picture of where architect involvement creates the most value.",next:"Real-time score tracking from engagement open date for all new accounts going forward."},
 ];
 document.getElementById('faq-grid').innerHTML=FAQS.map((f,i)=>`<div class="faq-card" id="faq-${i}" onclick="toggleFaq(${i})"><div class="faq-q"><span class="faq-q-ico">${f.ico}</span><span>${f.q}</span><span class="faq-chevron">▼</span></div><div class="faq-a">${f.a}<div class="next-step">🔬 <strong>To validate:</strong> ${f.next}</div></div></div>`).join('');
 function toggleFaq(i){document.getElementById('faq-'+i).classList.toggle('open');}
 const NS=[
-  {n:'01',t:"Measure from day one",b:"Baseline scores at kickoff. Track monthly. No more retroactive guessing."},
-  {n:'02',t:"Scores in every kickoff",b:"Show architects what we're trying to move — before the engagement starts."},
-  {n:'03',t:"Build a comparison baseline",b:"Find similar accounts without engagement. That's our control group."},
-  {n:'04',t:"Track what gets implemented",b:"Recommendations only matter if actioned. Connect the dots to score movement."},
-  {n:'05',t:"Grow to 50+ accounts",b:"15 is a starting point. We need volume before we can see a real pattern."},
-  {n:'06',t:"Review this quarterly",b:"Score trends change. So should our understanding. Review every quarter."},
+  {n:'01',t:"Score brief before every engagement",b:"Architect sees the account score profile before the first conversation. Walks in prepared."},
+  {n:'02',t:"Scores in the discussion agenda",b:"Account team and architect review the numbers together. Gaps become the agenda."},
+  {n:'03',t:"No claims — only context",b:"Architects do not own the score. They bring insight. Account teams and CSMs drive the action."},
+  {n:'04',t:"Track from engagement open",b:"Baseline recorded at kickoff. Revisited 3 months after close. Builds a real picture over time."},
+  {n:'05',t:"Quarterly account review",b:"Scores reviewed alongside account health every quarter. Not a one-off."},
+  {n:'06',t:"Grow the dataset",b:"15 accounts is a start. Expand across the full proactive motion to find patterns that matter."},
 ];
 document.getElementById('next-steps').innerHTML=NS.map(s=>`<div class="ns-card"><div class="ns-num">${s.n}</div><div class="ns-title">${s.t}</div><div class="ns-body">${s.b}</div></div>`).join('');
 const METH=[
-  {t:"What the data is",b:"CSS, THS, CES, Adoption — 15 accounts, monthly, Oct 2025–Sep 2026. Retroactive. Scores were not tracked against engagements at the time."},
-  {t:"How before/after is calculated",b:"Average of months before engagement close = Before. Average after = After. Delta is the difference. Indicative only."},
-  {t:"What trend means here",b:"Trended Up = THS or CSS delta >+1 pt. Trended Down = <-1 pt. A judgment call threshold, not statistical."},
-  {t:"What this cannot tell us",b:"Causation. Concurrent activities. How these compare to similar accounts without engagement. Whether changes last."},
-  {t:"Engagement data source",b:"Manually mapped from activity logs. Timing may be approximate. Will be tracked in real time going forward."},
-  {t:"What changes going forward",b:"Future runs track from engagement open date — real before/during/after, not hindsight. This view is the baseline."},
+  {t:"What the scores are",b:"CSS = overall Customer Success Score. THS = Technical Health. CES = Customer Expertise. Adoption = product-specific usage. Monthly, Oct 2025–Sep 2026."},
+  {t:"What before/after means",b:"Average score before the engagement close month vs. after. A directional read — not a controlled experiment."},
+  {t:"What the trend labels mean",b:"Trended Up = CSS or THS moved >+1 pt. Trended Down = fell <-1 pt. Held Steady = within that range."},
+  {t:"What this data does not prove",b:"That architect engagement caused any score change. Many factors influence scores. This is context, not attribution."},
+  {t:"How to use this in a conversation",b:"Bring the score as a shared starting point. Ask what is driving it. Use it to frame where architect knowledge is most relevant."},
+  {t:"What we are building toward",b:"Real-time tracking from engagement start. A growing dataset across more accounts. A clearer picture of where we add value."},
 ];
 document.getElementById('meth-grid').innerHTML=METH.map(m=>`<div class="meth-item"><strong>${m.t}</strong>${m.b}</div>`).join('');
 let activeFilter='all';
