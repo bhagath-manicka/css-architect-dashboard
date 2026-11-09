@@ -140,6 +140,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
 .modal-question{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12px;color:#0176D3;line-height:1.7;}
 .modal-question strong{color:#032D60;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
+
+.approach-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;padding:28px 48px 24px;}
+.approach-inner{max-width:1400px;margin:0 auto;}
+.approach-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#0176D3;margin-bottom:18px;}
+.approach-flow{display:flex;align-items:center;gap:0;}
+.approach-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;}
+.approach-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:10px;flex-shrink:0;}
+.approach-icon.blue{background:#EFF6FF;border:2px solid #BFDBFE;}
+.approach-icon.navy{background:#032D60;border:2px solid #032D60;}
+.approach-icon.green{background:#F0FDF4;border:2px solid #BBF7D0;}
+.approach-icon.amber{background:#FFFBEB;border:2px solid #FDE68A;}
+.approach-step-title{font-size:13px;font-weight:800;color:#0F172A;margin-bottom:4px;}
+.approach-step-sub{font-size:11px;color:#64748B;line-height:1.5;max-width:140px;}
+.approach-arrow{font-size:22px;color:#BFDBFE;flex-shrink:0;margin:0 8px;padding-bottom:28px;}
+.approach-not{background:#FEF2F2;border:1.5px solid #FECACA;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:inline-block;}
+.approach-yes{background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:700;color:#15803D;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:inline-block;}
 </style>
 </head>
 <body>
@@ -166,6 +182,59 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 </div>
+
+<div class="approach-strip">
+  <div class="approach-inner">
+    <div class="approach-label">Our Approach — How Scores Enter the Conversation</div>
+    <div class="approach-flow">
+
+      <div class="approach-step">
+        <div class="approach-icon blue">📊</div>
+        <div class="approach-step-title">Score Data Exists</div>
+        <div class="approach-not">Was not used</div>
+        <div class="approach-step-sub">CSS, Technical Health, Expertise, Adoption — tracked monthly for every account</div>
+      </div>
+
+      <div class="approach-arrow">→</div>
+
+      <div class="approach-step">
+        <div class="approach-icon navy">🏗️</div>
+        <div class="approach-step-title">Architect Prepares</div>
+        <div class="approach-yes">Now standard</div>
+        <div class="approach-step-sub">Reviews score profile before engaging. Walks in with context, not just expertise</div>
+      </div>
+
+      <div class="approach-arrow">→</div>
+
+      <div class="approach-step">
+        <div class="approach-icon blue">💬</div>
+        <div class="approach-step-title">Scores in the Room</div>
+        <div class="approach-yes">Starting point</div>
+        <div class="approach-step-sub">Numbers shared with account team. Gaps become the agenda. No judgement — just context</div>
+      </div>
+
+      <div class="approach-arrow">→</div>
+
+      <div class="approach-step">
+        <div class="approach-icon green">💡</div>
+        <div class="approach-step-title">Sharper Conversation</div>
+        <div class="approach-yes">The goal</div>
+        <div class="approach-step-sub">Account team gets an informed partner who sees the same picture they do</div>
+      </div>
+
+      <div class="approach-arrow">→</div>
+
+      <div class="approach-step">
+        <div class="approach-icon amber">📈</div>
+        <div class="approach-step-title">Account Team Acts</div>
+        <div class="approach-not">Not the architect</div>
+        <div class="approach-step-sub">Scores are a guiding factor. Decisions and actions belong to the account team and CSM</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <div class="kpi-strip" id="kpi-strip"></div>
 <div class="controls">
   <button class="filter-btn active" id="fb-all" onclick="setFilter('all')">All Accounts</button>
