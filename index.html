@@ -141,23 +141,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .modal-question{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12px;color:#0176D3;line-height:1.7;}
 .modal-question strong{color:#032D60;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
 
-.approach-strip{background:linear-gradient(135deg,#F0F7FF 0%,#FFFFFF 100%);border-bottom:2px solid #BFDBFE;padding:32px 48px 28px;}
+.approach-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;padding:32px 48px 28px;}
 .approach-inner{max-width:1400px;margin:0 auto;}
-.approach-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#0176D3;margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+.approach-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#0176D3;margin-bottom:28px;display:flex;align-items:center;gap:12px;}
 .approach-label::after{content:'';flex:1;height:1px;background:#BFDBFE;}
-.approach-flow{display:flex;align-items:flex-start;gap:0;}
-.approach-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
-.approach-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:10px;flex-shrink:0;}
-.approach-icon.blue{background:#EFF6FF;border:2px solid #BFDBFE;}
-.approach-icon.navy{background:#032D60;font-size:22px;}
-.approach-icon.green{background:#F0FDF4;border:2px solid #BBF7D0;}
-.approach-icon.amber{background:#FFFBEB;border:2px solid #FDE68A;}
-.approach-step-badge{border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:inline-block;}
-.approach-step-badge.not{background:#FEF2F2;border:1.5px solid #FECACA;color:#DC2626;}
-.approach-step-badge.yes{background:#F0FDF4;border:1.5px solid #BBF7D0;color:#15803D;}
-.approach-step-title{font-size:14px;font-weight:800;color:#0F172A;margin-bottom:6px;line-height:1.2;}
-.approach-step-sub{font-size:11px;color:#64748B;line-height:1.5;max-width:130px;}
-.approach-arrow{font-size:28px;color:#93C5FD;flex-shrink:0;margin:0 4px;padding-top:20px;font-weight:300;}
+.approach-timeline{display:flex;position:relative;padding-bottom:4px;}
+.approach-timeline::before{content:'';position:absolute;top:84px;left:10%;right:10%;height:3px;background:linear-gradient(to right,#1B96FF,#15803D,#F97316,#06A59A,#032D60);z-index:0;}
+.atl-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
+.atl-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--sc);box-shadow:0 4px 14px rgba(0,0,0,0.18);}
+.atl-stem{width:2px;height:18px;background:var(--sc);}
+.atl-dot{width:14px;height:14px;border-radius:50%;background:var(--sc);border:3px solid #FFFFFF;box-shadow:0 0 0 2px var(--sc);margin-bottom:10px;}
+.atl-num{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--sc);margin-bottom:4px;}
+.atl-title{font-size:14px;font-weight:800;color:#0F172A;margin-bottom:6px;line-height:1.2;}
+.atl-badge{border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:inline-block;}
+.atl-badge.not{background:#FEF2F2;border:1.5px solid #FECACA;color:#DC2626;}
+.atl-badge.yes{background:#F0FDF4;border:1.5px solid #BBF7D0;color:#15803D;}
+.atl-body{font-size:11px;color:#64748B;line-height:1.5;max-width:130px;}
 </style>
 </head>
 <body>
@@ -178,54 +177,63 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
 <div class="approach-strip">
   <div class="approach-inner">
-    <div class="approach-label">Our Approach — How This Works</div>
-    <div class="approach-flow">
+    <div class="approach-label">Our Approach — How Scores Enter the Conversation</div>
+    <div class="approach-timeline">
 
-      <div class="approach-step">
-        <div class="approach-icon blue">📊</div>
-        <div class="approach-step-badge not">Was ignored</div>
-        <div class="approach-step-title">Score Data</div>
-        <div class="approach-step-sub">CSS · Tech Health · Expertise · Adoption tracked every month</div>
+      <div class="atl-step" style="--sc:#1B96FF">
+        <div class="atl-circle">🔍</div>
+        <div class="atl-stem"></div>
+        <div class="atl-dot"></div>
+        <div class="atl-num">Step 01</div>
+        <div class="atl-title">Score Data Exists</div>
+        <div class="atl-badge not">Was not used</div>
+        <div class="atl-body">CSS · Tech Health · Expertise · Adoption tracked every month for every account</div>
       </div>
 
-      <div class="approach-arrow">›</div>
-
-      <div class="approach-step">
-        <div class="approach-icon navy">🏗</div>
-        <div class="approach-step-badge yes">Now: step one</div>
-        <div class="approach-step-title">Architect Reviews</div>
-        <div class="approach-step-sub">Score profile read before any engagement. Context in hand before the first conversation</div>
+      <div class="atl-step" style="--sc:#15803D">
+        <div class="atl-circle">🏗️</div>
+        <div class="atl-stem"></div>
+        <div class="atl-dot"></div>
+        <div class="atl-num">Step 02</div>
+        <div class="atl-title">Architect Prepares</div>
+        <div class="atl-badge yes">Now standard</div>
+        <div class="atl-body">Reviews score profile before every engagement. Walks in with context, not just expertise</div>
       </div>
 
-      <div class="approach-arrow">›</div>
-
-      <div class="approach-step">
-        <div class="approach-icon blue">💬</div>
-        <div class="approach-step-badge yes">Starting point</div>
-        <div class="approach-step-title">In the Room Together</div>
-        <div class="approach-step-sub">Scores shared with account team. Gaps become the agenda — not assumptions</div>
+      <div class="atl-step" style="--sc:#F97316">
+        <div class="atl-circle">💬</div>
+        <div class="atl-stem"></div>
+        <div class="atl-dot"></div>
+        <div class="atl-num">Step 03</div>
+        <div class="atl-title">Scores in the Room</div>
+        <div class="atl-badge yes">Starting point</div>
+        <div class="atl-body">Numbers shared with account team. Gaps become the agenda — no judgement, just context</div>
       </div>
 
-      <div class="approach-arrow">›</div>
-
-      <div class="approach-step">
-        <div class="approach-icon green">💡</div>
-        <div class="approach-step-badge yes">The value</div>
-        <div class="approach-step-title">Better Conversation</div>
-        <div class="approach-step-sub">Account owner gets a partner who sees the same picture. Architect knowledge meets real context</div>
+      <div class="atl-step" style="--sc:#06A59A">
+        <div class="atl-circle">📈</div>
+        <div class="atl-stem"></div>
+        <div class="atl-dot"></div>
+        <div class="atl-num">Step 04</div>
+        <div class="atl-title">Sharper Conversation</div>
+        <div class="atl-badge yes">The goal</div>
+        <div class="atl-body">Account team gets an informed partner who sees the same picture they do</div>
       </div>
 
-      <div class="approach-arrow">›</div>
-
-      <div class="approach-step">
-        <div class="approach-icon amber">🎯</div>
-        <div class="approach-step-badge not">Not the architect</div>
-        <div class="approach-step-title">Account Team Acts</div>
-        <div class="approach-step-sub">Scores guide the discussion. Decisions and actions belong to the account team and CSM</div>
+      <div class="atl-step" style="--sc:#032D60">
+        <div class="atl-circle">✅</div>
+        <div class="atl-stem"></div>
+        <div class="atl-dot"></div>
+        <div class="atl-num">Step 05</div>
+        <div class="atl-title">Account Team Acts</div>
+        <div class="atl-badge not">Not the architect</div>
+        <div class="atl-body">Scores are a guiding factor. Decisions and actions belong to the account team and CSM</div>
       </div>
 
     </div>
   </div>
+</div>
+
 </div>
 
 <div class="hyp-banner">
