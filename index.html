@@ -141,22 +141,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .modal-question{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:12px 16px;font-size:12px;color:#0176D3;line-height:1.7;}
 .modal-question strong{color:#032D60;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
 
-.approach-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;padding:32px 48px 28px;}
+.approach-strip{background:#FFFFFF;border-bottom:2px solid #BFDBFE;padding:36px 60px 32px;}
 .approach-inner{max-width:1400px;margin:0 auto;}
-.approach-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#0176D3;margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+.approach-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#0176D3;margin-bottom:32px;display:flex;align-items:center;gap:12px;}
 .approach-label::after{content:'';flex:1;height:1px;background:#BFDBFE;}
-.approach-timeline{display:flex;position:relative;padding-bottom:4px;}
-.approach-timeline::before{content:'';position:absolute;top:84px;left:10%;right:10%;height:3px;background:linear-gradient(to right,#1B96FF,#15803D,#F97316,#06A59A,#032D60);z-index:0;}
-.atl-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
-.atl-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--sc);box-shadow:0 4px 14px rgba(0,0,0,0.18);}
-.atl-stem{width:2px;height:18px;background:var(--sc);}
-.atl-dot{width:14px;height:14px;border-radius:50%;background:var(--sc);border:3px solid #FFFFFF;box-shadow:0 0 0 2px var(--sc);margin-bottom:10px;}
-.atl-num{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--sc);margin-bottom:4px;}
-.atl-title{font-size:14px;font-weight:800;color:#0F172A;margin-bottom:6px;line-height:1.2;}
-.atl-badge{border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:inline-block;}
+.approach-timeline{display:flex;position:relative;}
+.approach-timeline::before{content:'';position:absolute;top:30px;left:calc(10% + 30px);right:calc(10% + 30px);height:4px;background:linear-gradient(to right,#1B96FF 0%,#15803D 25%,#F97316 50%,#06A59A 75%,#032D60 100%);z-index:0;border-radius:2px;}
+.atl-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 6px;}
+.atl-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--sc);box-shadow:0 4px 16px rgba(0,0,0,0.20);margin-bottom:16px;flex-shrink:0;}
+.atl-num{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--sc);margin-bottom:5px;}
+.atl-title{font-size:13px;font-weight:800;color:#0F172A;margin-bottom:7px;line-height:1.3;}
+.atl-badge{border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:7px;display:inline-block;white-space:nowrap;}
 .atl-badge.not{background:#FEF2F2;border:1.5px solid #FECACA;color:#DC2626;}
 .atl-badge.yes{background:#F0FDF4;border:1.5px solid #BBF7D0;color:#15803D;}
-.atl-body{font-size:11px;color:#64748B;line-height:1.5;max-width:130px;}
+.atl-body{font-size:11px;color:#64748B;line-height:1.5;max-width:140px;}
 </style>
 </head>
 <body>
@@ -182,8 +180,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
       <div class="atl-step" style="--sc:#1B96FF">
         <div class="atl-circle">🔍</div>
-        <div class="atl-stem"></div>
-        <div class="atl-dot"></div>
         <div class="atl-num">Step 01</div>
         <div class="atl-title">Score Data Exists</div>
         <div class="atl-badge not">Was not used</div>
@@ -192,8 +188,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
       <div class="atl-step" style="--sc:#15803D">
         <div class="atl-circle">🏗️</div>
-        <div class="atl-stem"></div>
-        <div class="atl-dot"></div>
         <div class="atl-num">Step 02</div>
         <div class="atl-title">Architect Prepares</div>
         <div class="atl-badge yes">Now standard</div>
@@ -202,8 +196,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
       <div class="atl-step" style="--sc:#F97316">
         <div class="atl-circle">💬</div>
-        <div class="atl-stem"></div>
-        <div class="atl-dot"></div>
         <div class="atl-num">Step 03</div>
         <div class="atl-title">Scores in the Room</div>
         <div class="atl-badge yes">Starting point</div>
@@ -212,8 +204,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
       <div class="atl-step" style="--sc:#06A59A">
         <div class="atl-circle">📈</div>
-        <div class="atl-stem"></div>
-        <div class="atl-dot"></div>
         <div class="atl-num">Step 04</div>
         <div class="atl-title">Sharper Conversation</div>
         <div class="atl-badge yes">The goal</div>
@@ -222,8 +212,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
       <div class="atl-step" style="--sc:#032D60">
         <div class="atl-circle">✅</div>
-        <div class="atl-stem"></div>
-        <div class="atl-dot"></div>
         <div class="atl-num">Step 05</div>
         <div class="atl-title">Account Team Acts</div>
         <div class="atl-badge not">Not the architect</div>
