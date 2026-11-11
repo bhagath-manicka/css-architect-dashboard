@@ -12,24 +12,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .header{background:linear-gradient(135deg,#032D60 0%,#0176D3 60%,#06A59A 100%);padding:40px 48px 36px;position:relative;overflow:hidden;}
 .header::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.05);}
 .header::after{content:'';position:absolute;bottom:-100px;right:200px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,0.03);}
-.header-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:32px;}
-.header-text{flex:1;}
-.header h1{font-size:22px;font-weight:900;letter-spacing:-0.3px;line-height:1.25;color:white;max-width:320px;}
+.header-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;}
+
+.header h1{font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1.2;color:white;}
 .header-meta{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
 .header-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:20px;padding:4px 14px;font-size:11px;font-weight:600;}
-.header-right{text-align:left;color:rgba(255,255,255,0.5);font-size:10px;line-height:1.9;margin-top:12px;}
-.header-scale{flex-shrink:0;width:440px;display:flex;align-items:center;gap:0;justify-content:center;}
-.scale-side{flex:1;display:flex;flex-direction:column;gap:10px;}
-.scale-side.left{align-items:flex-end;padding-right:12px;}
-.scale-side.right{align-items:flex-start;padding-left:12px;}
-.scale-item{display:flex;align-items:center;gap:8px;}
-.scale-item.left{flex-direction:row-reverse;}
-.scale-item-icon{width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.08);flex-shrink:0;}
-.scale-item-text{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.4;text-align:right;}
-.scale-item.right .scale-item-text{text-align:left;}
-.scale-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-bottom:8px;}
-.scale-side.left .scale-label{text-align:right;}
-.scale-center{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex-shrink:0;}
+.header-right{position:absolute;top:40px;right:48px;z-index:1;text-align:right;color:rgba(255,255,255,0.6);font-size:11px;line-height:1.9;}
 .hyp-banner{background:#FFFBEB;border-bottom:2px solid #FDE68A;border-top:2px solid #FDE68A;padding:20px 48px;}
 .hyp-inner{max-width:1400px;margin:0 auto;display:flex;align-items:flex-start;gap:18px;}
 .hyp-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
@@ -167,79 +155,95 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .atl-badge.not{background:#FEF2F2;border:1.5px solid #FECACA;color:#DC2626;}
 .atl-badge.yes{background:#F0FDF4;border:1.5px solid #BBF7D0;color:#15803D;}
 .atl-body{font-size:11px;color:#64748B;line-height:1.5;max-width:140px;}
+
+.balance-section{background:#F8FAFF;border-bottom:2px solid #BFDBFE;padding:32px 48px 28px;}
+.balance-inner{max-width:800px;margin:0 auto;}
+.balance-title{font-size:15px;font-weight:800;color:#032D60;text-align:center;margin-bottom:24px;letter-spacing:-0.2px;}
+.balance-layout{display:flex;align-items:center;justify-content:center;gap:0;}
+.balance-side{flex:1;display:flex;flex-direction:column;gap:16px;}
+.balance-side.left{align-items:flex-end;}
+.balance-side.right{align-items:flex-start;}
+.bside-item{display:flex;align-items:center;gap:12px;}
+.balance-side.left .bside-item{flex-direction:row-reverse;}
+.bside-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.bside-icon.red{background:#FEF2F2;border:2px solid #FECACA;}
+.bside-icon.green{background:#F0FDF4;border:2px solid #BBF7D0;}
+.bside-text{font-size:13px;color:#334155;line-height:1.4;font-weight:500;}
+.balance-side.left .bside-text{text-align:right;}
+.balance-center{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:0 32px;}
+.balance-caption{font-size:9px;color:#94A3B8;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-top:6px;line-height:1.5;}
+.balance-labels{display:flex;align-items:center;margin-top:8px;max-width:800px;margin-left:auto;margin-right:auto;}
+.blabel{flex:1;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;text-align:center;}
+.blabel.without{color:#EF4444;}
+.blabel.with{color:#16A34A;}
+.blabel.spacer{width:194px;flex:0 0 194px;}
 </style>
 </head>
 <body>
 <div class="header">
   <div class="header-inner">
-    <div class="header-text">
-      <h1>Proactive Motion — Bringing Scores into the Conversation</h1>
-      <div class="header-meta">
-        <span class="header-tag">15 Accounts Observed</span>
-        <span class="header-tag">Oct 2025 – Sep 2026</span>
-        <span class="header-tag">4 Score Dimensions</span>
-        <span class="header-tag">EMEA · IST · APAC</span>
-        <span class="header-tag" style="background:rgba(1,118,211,0.12);border-color:rgba(1,118,211,0.3);color:#032D60;">Scores Now In the Room</span>
-      </div>
-      <div class="header-right">Oct 2026 · Industries Cloud · LSC</div>
+    <h1>Proactive Motion — Bringing Scores into the Conversation</h1>
+    <div class="header-meta">
+      <span class="header-tag">15 Accounts Observed</span>
+      <span class="header-tag">Oct 2025 – Sep 2026</span>
+      <span class="header-tag">4 Score Dimensions</span>
+      <span class="header-tag">EMEA · IST · APAC</span>
+      <span class="header-tag" style="background:rgba(1,118,211,0.12);border-color:rgba(1,118,211,0.3);color:#032D60;">Scores Now In the Room</span>
     </div>
-
-    <!-- Balance scale: Account preparation before and now -->
-    <div class="header-scale">
-      <!-- Left pan: Without scores -->
-      <div class="scale-side left">
-        <div class="scale-label">Without Scores</div>
-        <div class="scale-item left">
-          <div class="scale-item-icon">🚫</div>
-          <div class="scale-item-text">No discussions framed around scores</div>
-        </div>
-        <div class="scale-item left">
-          <div class="scale-item-icon">❌</div>
-          <div class="scale-item-text">No decisions made against scores</div>
-        </div>
-      </div>
-
-      <!-- Scales SVG -->
-      <div class="scale-center">
-        <svg width="90" height="120" viewBox="0 0 90 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Vertical pole -->
-          <line x1="45" y1="20" x2="45" y2="95" stroke="rgba(255,255,255,0.5)" stroke-width="2.5"/>
-          <!-- Base triangle -->
-          <polygon points="45,95 22,115 68,115" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linejoin="round"/>
-          <!-- Base foot -->
-          <line x1="16" y1="115" x2="74" y2="115" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- Pivot circle -->
-          <circle cx="45" cy="20" r="5" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-          <!-- Beam — tilted left down (without scores heavier) -->
-          <line x1="8" y1="34" x2="82" y2="26" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- Left pan chain -->
-          <line x1="8" y1="34" x2="8" y2="50" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <!-- Right pan chain -->
-          <line x1="82" y1="26" x2="82" y2="42" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <!-- Left pan (lower — heavier) -->
-          <path d="M2,50 Q8,58 14,50" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="rgba(255,255,255,0.1)" stroke-linecap="round"/>
-          <!-- Right pan (higher — lighter) -->
-          <path d="M76,42 Q82,50 88,42" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="rgba(255,255,255,0.1)" stroke-linecap="round"/>
-        </svg>
-        <div style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;margin-top:2px;">Account Preparation</div>
-      </div>
-
-      <!-- Right pan: With scores -->
-      <div class="scale-side right">
-        <div class="scale-label">With Scores</div>
-        <div class="scale-item right">
-          <div class="scale-item-icon">📊</div>
-          <div class="scale-item-text">Scores provide account context</div>
-        </div>
-        <div class="scale-item right">
-          <div class="scale-item-icon">🤝</div>
-          <div class="scale-item-text">Sharper, more informed partner</div>
-        </div>
-      </div>
-    </div>
-
   </div>
+  <div class="header-right">Report: Oct 2026<br>Industries Cloud<br>Salesforce LSC</div>
 
+</div>
+
+<div class="balance-section">
+  <div class="balance-inner">
+    <div class="balance-title">Account Preparation: Before and Now</div>
+    <div class="balance-layout">
+
+      <div class="balance-side left">
+        <div class="bside-item">
+          <div class="bside-icon red">🚫</div>
+          <div class="bside-text">No discussions<br>framed around scores</div>
+        </div>
+        <div class="bside-item">
+          <div class="bside-icon red">📋</div>
+          <div class="bside-text">No decisions<br>made against scores</div>
+        </div>
+      </div>
+
+      <div class="balance-center">
+        <svg width="130" height="160" viewBox="0 0 130 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="65" y1="18" x2="65" y2="128" stroke="#BFDBFE" stroke-width="3"/>
+          <polygon points="65,128 38,152 92,152" fill="none" stroke="#93C5FD" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="24" y1="152" x2="106" y2="152" stroke="#93C5FD" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="65" cy="18" r="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2.5"/>
+          <line x1="8" y1="44" x2="122" y2="30" stroke="#1B96FF" stroke-width="3" stroke-linecap="round"/>
+          <line x1="8" y1="44" x2="8" y2="70" stroke="#93C5FD" stroke-width="1.5"/>
+          <line x1="122" y1="30" x2="122" y2="56" stroke="#93C5FD" stroke-width="1.5"/>
+          <path d="M1,70 Q8,82 15,70" stroke="#EF4444" stroke-width="2.5" fill="#FEE2E2" stroke-linecap="round"/>
+          <path d="M115,56 Q122,68 129,56" stroke="#22C55E" stroke-width="2.5" fill="#DCFCE7" stroke-linecap="round"/>
+        </svg>
+        <div class="balance-caption">Account<br>Preparation</div>
+      </div>
+
+      <div class="balance-side right">
+        <div class="bside-item">
+          <div class="bside-icon green">📊</div>
+          <div class="bside-text">Scores provide<br>account context</div>
+        </div>
+        <div class="bside-item">
+          <div class="bside-icon green">🤝</div>
+          <div class="bside-text">Sharper, more<br>informed partner</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="balance-labels">
+      <div class="blabel without">Without Scores</div>
+      <div class="blabel spacer"></div>
+      <div class="blabel with">With Scores</div>
+    </div>
+  </div>
 </div>
 
 <div class="approach-strip">
